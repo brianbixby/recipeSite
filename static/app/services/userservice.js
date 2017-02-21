@@ -21,6 +21,7 @@ angular.module('App')
       });
     },
     login: function(params) {
+      console.log('Login-params: ', params);
       var req = {
         url: '/api/auth',
         method: 'POST',
@@ -29,6 +30,7 @@ angular.module('App')
       return $http(req).then(function(res) {
         console.log("got network", res);
         Auth.saveToken(res.data.token);
+        console.log("token: ", res.data.token);
         return res.data.user;
       });
     }

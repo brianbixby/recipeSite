@@ -12,14 +12,13 @@ function LoginCompCtrl($http, $location, Auth, UserService) {
     password: ''
   };
   loginComp.userLogin = function() {
-    $http.post('/api/auth', loginComp.user).then(function success(res) {
-      Auth.saveToken(res.data.token);
-      console.log('Token:', res.data.token)
+  UserService.login(loginComp.user).then(function(user) {
+    console.log("login response: ", loginComp.user);
+    if(user !== false) {
       $location.path('/');
-    }, function error(res) {
-      console.log(data);
-    });
-  }
+    }
+  });
+};
 }
 
 LoginCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];

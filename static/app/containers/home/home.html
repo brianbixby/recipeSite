@@ -1,1 +1,22 @@
 <p> this is the home page</p>
+<form ng-submit="homeComp.search()">
+  <input type="text" ng-model="homeComp.searchTerm" />
+  <button type="submit">search OMDB</button>
+</form>
+<div ng-show="homeComp.results !== undefined && homeComp.results.length === 0">
+  Sorry, no results.
+</div>
+<div ng-show="homeComp.results !== undefined && homeComp.results.length > 0"
+     ng-repeat="result in homeComp.results">
+  <p>calories: {{result.recipe.calories}}</p>
+  <p>cautions: {{result.recipe.cautions}}</p>
+  <p>diets: {{result.recipe.dietLabels}}</p>
+  <p>health: {{result.recipe.healthLabels}}</p>
+  <p>ingredients: {{result.recipe.ingredientLines}}</p>
+  <p>labels: {{result.recipe.label}}</p>
+  <p>Link: {{result.recipe.shareAs}}</p>
+  <p>Source: {{result.recipe.source}}</p>
+  <img ng-if="result.recipe.image !== 'N/A'"
+       ng-src="{{result.recipe.image}}" />
+  <img ng-if="result.recipe.image === 'N/A'" src="not-found.jpg">
+</div>

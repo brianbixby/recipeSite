@@ -11,7 +11,6 @@ angular.module('App')
       $window.localStorage.removeItem('user-token');
     },
     isLoggedIn: function() {
-      console.log('AUTHSERVICE-isloggedin');
       var token = this.getToken();
       return token ? true : false;
     },

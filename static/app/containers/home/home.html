@@ -17,14 +17,22 @@
     <span class="glyphicon glyphicon-bookmark"></span> Save
   </button>
   <h2>{{result.recipe.ingredientLines.length}} Ingredients</h2>
-  <p>{{result.recipe.ingredientLines}} </p>
+  <p ng-repeat="each in result.recipe.ingredients">{{each.text}}</p>
   <h2>Nutrition </h2>
+  <p> {{result.recipe.calories/result.recipe.yield | noDecimal}} <br> CALORIES/SERVING</p>
+  <p> {{result.recipe.calories/result.recipe.yield | dailyCalPercent}}%<BR> DAILY VALUE</p>
+  <P> {{result.recipe.yield}} <BR> SERVINGS </P>
+  <h2>Preparation</h2>
+  <p>   <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+       Instructions
+    </button> on <a href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
 
-  <p>calories: {{result.recipe.calories}}</p>
-  <p>cautions: {{result.recipe.cautions}}</p>
-  <p>diets: {{result.recipe.dietLabels}}</p>
+    <h3> <a href="#">{{result.recipe.dietLabels | showFirst}}</a> <a href="#">{{result.recipe.healthLabels | showFirst}}</a></h3>
+
+
+  <p ng-repeat="all in result.recipe.digest">{{all.label}} {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}   {{(all.total/result.recipe.yield)/all.daily | percentage}}% </p>
+                                                                                                                            501           6                   771
   <p>Nutritional Facts: {{result.recipe.digest}}</p>
-  <p>health: {{result.recipe.healthLabels}}</p>
 
 
   <p>Share: <a href="{{result.recipe.shareAs}}">Share</a></p>
@@ -32,7 +40,6 @@
   <p>Total Nutrients: {{result.recipe.totalNutrients}}</p>
   <p>Total Weight: {{result.recipe.totalWeight | pounds}}</p>
   <p>URI: <a href="{{result.recipe.uri}}">link text</a></p>
-
-  <p>Serves {{result.recipe.yield}} people.</p>
+  <p>cautions: {{result.recipe.cautions}}</p>
 
 </div>

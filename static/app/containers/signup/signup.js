@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'signupComp'
 });
 
-function SignupCompCtrl($http, $location, Auth, UserService) {
+function SignupCompCtrl($http, $state, $location, Auth, UserService) {
   var signupComp = this;
   signupComp.user = {
     email: '',
@@ -22,10 +22,11 @@ function SignupCompCtrl($http, $location, Auth, UserService) {
       console.log("user create error");
     } else {
       console.log("got user: ", signupComp.user);
+      UserService.login(params)
       $location.path('/');
     }
   });
   };
 }
 
-SignupCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];
+SignupCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];

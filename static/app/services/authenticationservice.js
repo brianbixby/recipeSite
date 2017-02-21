@@ -2,15 +2,16 @@ angular.module('App')
 .factory('Auth', ['$window', function($window) {
   return {
     saveToken: function(token) {
-      $window.localStorage['secretrecipes-token'] = token;
+      $window.localStorage['user-token'] = token;
     },
     getToken: function() {
-      return $window.localStorage['secretrecipes-token'];
+      return $window.localStorage['user-token'];
     },
     removeToken: function() {
-      $window.localStorage.removeItem('secretrecipes-token');
+      $window.localStorage.removeItem('user-token');
     },
     isLoggedIn: function() {
+      console.log('AUTHSERVICE-isloggedin');
       var token = this.getToken();
       return token ? true : false;
     },

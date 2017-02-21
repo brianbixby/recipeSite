@@ -5,13 +5,15 @@ angular.module('App')
   controllerAs: 'navbarComp'
 });
 
-function NavbarCompCtrl(Auth) {
+function NavbarCompCtrl($location, Auth, UserService) {
   var navbarComp = this;
-  navbarComp.Auth = Auth;
+  navbarComp.isLoggedIn = function() {
+    return Auth.isLoggedIn();
+  };
   navbarComp.logout = function() {
     Auth.removeToken();
-    console.log('My token:', Auth.getToken());
-  }
+    $location.path('/login');
+  };
 }
 
-NavbarCompCtrl.$inject = ['Auth'];
+NavbarCompCtrl.$inject = ['$location', 'Auth', 'UserService'];

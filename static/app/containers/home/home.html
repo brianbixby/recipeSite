@@ -1,4 +1,3 @@
-<p> this is the home page</p>
 <form ng-submit="homeComp.search()">
   <input type="text" ng-model="homeComp.searchTerm" />
   <button type="submit">search OMDB</button>
@@ -29,17 +28,9 @@
 
     <h3> <a href="#">{{result.recipe.dietLabels | showFirst}}</a> <a href="#">{{result.recipe.healthLabels | showFirst}}</a></h3>
 
-
-  <p ng-repeat="all in result.recipe.digest">{{all.label}} {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}   {{(all.total/result.recipe.yield)/all.daily | percentage}}% </p>
-                                                                                                                            501           6                   771
-  <p>Nutritional Facts: {{result.recipe.digest}}</p>
-
-
-  <p>Share: <a href="{{result.recipe.shareAs}}">Share</a></p>
-  <p>Total Daily: {{result.recipe.totalDaily}}</p>
-  <p>Total Nutrients: {{result.recipe.totalNutrients}}</p>
-  <p>Total Weight: {{result.recipe.totalWeight | pounds}}</p>
-  <p>URI: <a href="{{result.recipe.uri}}">link text</a></p>
-  <p>cautions: {{result.recipe.cautions}}</p>
+  <div ng-repeat="all in result.recipe.digest">
+    <p>{{all.label}} {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}   {{(all.total/result.recipe.yield)/all.daily | percentage}}% </p>
+    <p ng-repeat="subitem in all.sub">{{subitem.label}} {{subitem.total/result.recipe.yield | noDecimal}}{{subitem.unit}}   {{(subitem.total/result.recipe.yield)/subitem.daily | percentage}}% </p>
+  </div>
 
 </div>

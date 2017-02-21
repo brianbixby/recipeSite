@@ -8,15 +8,31 @@
 </div>
 <div ng-show="homeComp.results !== undefined && homeComp.results.length > 0"
      ng-repeat="result in homeComp.results">
-  <p>calories: {{result.recipe.calories}}</p>
-  <p>cautions: {{result.recipe.cautions}}</p>
-  <p>diets: {{result.recipe.dietLabels}}</p>
-  <p>health: {{result.recipe.healthLabels}}</p>
-  <p>ingredients: {{result.recipe.ingredientLines}}</p>
-  <p>labels: {{result.recipe.label}}</p>
-  <p>Link: {{result.recipe.shareAs}}</p>
-  <p>Source: {{result.recipe.source}}</p>
+  <h1>{{result.recipe.label}}</h1>
   <img ng-if="result.recipe.image !== 'N/A'"
        ng-src="{{result.recipe.image}}" />
   <img ng-if="result.recipe.image === 'N/A'" src="not-found.jpg">
+  <p>See full recipe on: <a href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
+  <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+    <span class="glyphicon glyphicon-bookmark"></span> Save
+  </button>
+  <h2>{{result.recipe.ingredientLines.length}} Ingredients</h2>
+  <p>{{result.recipe.ingredientLines}} </p>
+  <h2>Nutrition </h2>
+
+  <p>calories: {{result.recipe.calories}}</p>
+  <p>cautions: {{result.recipe.cautions}}</p>
+  <p>diets: {{result.recipe.dietLabels}}</p>
+  <p>Nutritional Facts: {{result.recipe.digest}}</p>
+  <p>health: {{result.recipe.healthLabels}}</p>
+
+
+  <p>Share: <a href="{{result.recipe.shareAs}}">Share</a></p>
+  <p>Total Daily: {{result.recipe.totalDaily}}</p>
+  <p>Total Nutrients: {{result.recipe.totalNutrients}}</p>
+  <p>Total Weight: {{result.recipe.totalWeight | pounds}}</p>
+  <p>URI: <a href="{{result.recipe.uri}}">link text</a></p>
+
+  <p>Serves {{result.recipe.yield}} people.</p>
+
 </div>

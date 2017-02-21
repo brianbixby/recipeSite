@@ -10,6 +10,7 @@ angular.module('App', ['ui.router'])
       //   update: {method: 'PUT'},
       //   delete: {method: 'DELETE'}
       // };
+      $urlRouterProvider.otherwise('/');
 
       $httpProvider.interceptors.push('AuthInterceptor');
 

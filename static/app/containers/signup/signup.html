@@ -1,13 +1,13 @@
-<form ng-submit="userSignup()">
+<form ng-submit="signupComp.userSignup()">
   <legend>Signup</legend>
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="test@test.com" ng-model="user.email">
+    <input type="email" class="form-control" id="email" placeholder="test@test.com" ng-model="signupComp.user.email">
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="********" ng-model="user.password">
+    <input type="password" class="form-control" id="password" placeholder="********" ng-model="signupComp.user.password">
   </div>
 
   <button type="submit" class="btn btn-primary">Signup</button>

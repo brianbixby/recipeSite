@@ -3,6 +3,7 @@ angular.module('App')
   return {
     createAccount: function(params) {
       var URL ='/api/users';
+      console.log('SIGNUP-params: ', params);
       var req = {
         url: URL,
         method: "POST",

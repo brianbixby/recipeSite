@@ -4,12 +4,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var request = require('request');
-var app = express();
+
 
 // JSON web token dependencies, including a secret key to sign the token
 var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var secret = process.env.JWT_SECRET;
+
+var app = express();
 
 // mongoose models and connection
 var mongoose = require('mongoose');
@@ -27,14 +29,14 @@ app.use(require('morgan')('dev'));
 
 
 // app.use('/api/recipes', require('./controllers/recipes'));
-app.use('/api/users', require('./controllers/users'));
+// app.use('/api/users', require('./controllers/users'));
 
 // Replace the above routes with the following
 
 // app.use('/api/recipes', expressJWT({secret: secret}), require('./controllers/recipes'));
-// app.use('/api/users', expressJWT({secret: secret}).unless({
-//   path: [{ url: '/api/users', methods: ['POST'] }]
-// }), require('./controllers/users'));
+app.use('/api/users', expressJWT({secret: secret}).unless({
+  path: [{ url: '/api/users', methods: ['POST'] }]
+}), require('./controllers/users'));
 
 
 // this middleware will check if expressJWT did not authorize the user, and return a message

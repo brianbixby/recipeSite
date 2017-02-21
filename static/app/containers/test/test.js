@@ -5,6 +5,8 @@ angular.module('App')
   controllerAs: 'testComp'
 });
 
-function TestCompCtrl() {
+function TestCompCtrl(Auth) {
 
 }
+
+TestCompCtrl.$inject = ['Auth'];

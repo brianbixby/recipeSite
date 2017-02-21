@@ -11,11 +11,21 @@ angular.module('App', ['ui.router'])
       //   delete: {method: 'DELETE'}
       // };
 
+      $httpProvider.interceptors.push('AuthInterceptor');
+
       //Setup states (routes)
       $stateProvider
       .state('homeState', {
         url: '/',
         component: 'homeComp'
+      })
+      .state('loginState', {
+        url: '/login',
+        component: 'loginComp'
+      })
+      .state('signupState', {
+        url: '/signup',
+        component: 'signupComp'
       })
       .state('testState', {
         url: '/test',

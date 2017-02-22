@@ -1,4 +1,16 @@
 <div class="container">
+  <!-- SIGNUP OR lOGIN  -->
+  <div id=signupOrLogin class="row">
+    <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
+      <p id="signupOrLoginText"><span class="line">Save the recipes </span> <span class="line"> you love!</span></p>
+      <!-- <a id="signUpButton" href="/signup" class="btn btn-default btn-lg" role="button">Sign Up</a>
+      <a id="logInButton" href="/login" class="btn btn-default btn-lg" role="button">Log In</a> -->
+      <a href="/signup" class="button orange">Sign Up</a>
+      <a href="/login" class="button green">Log In</a>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR -->
   <div id="searchBar" class="row">
     <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
       <form id="search-form"  role="form"  target="_blank" ng-submit="homeComp.search()">
@@ -12,13 +24,13 @@
     </div>
   </div>
 
-  <div id=signupOrLogin>
-    <p>Save the recipes you love!</p>
-    <div class="btn">
-      <a href="/signup" id="account-btn-signup" class="inp-btn btn-bold btn-orang">Sign Up</a>
-      <a href="/login"  id="account-btn-login"  class="inp-btn btn-bold btn-white" >Log In</a>
+  <!-- SEARCH FILTER -->
+  <div id="searchFilter" class="row">
+    <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
+      <p id="searchFilterText"><span id="smallFont"> REFINE SEARCH BY </span> <span id="bold"> Calories, Diet, Ingredients </span> <span id="searchFilterDownArrow" class="glyphicon glyphicon-triangle-bottom"></span> </p>
     </div>
   </div>
+
 
 
   <div ng-show="homeComp.results !== undefined && homeComp.results.length === 0">

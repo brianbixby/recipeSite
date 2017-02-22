@@ -40,13 +40,17 @@
   <canvas id="canvas" height="300" width="300"></canvas>
 
   <div ng-repeat="all in result.recipe.digest">
-    <p> <a ng-click="all.isHidingOpen = !all.isHidingOpen"
-      class="glyphicon glyphicon-play"> {{all.label | addButton}}</a>
+    <p>
+      <a id="all-{{$index}}"
+      ng-click="all.isHidingOpen = !all.isHidingOpen"
+      ng-class="{'glyphicon glyphicon-play': all.sub.length > 0, 'disable-link': !all.sub }">
+      {{all.label }}</a>
       {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}
       {{(all.total/result.recipe.yield)/all.daily | percentage}}%
     </p>
     <p ng-show="all.isHidingOpen"
-       ng-repeat="subitem in all.sub">
+       ng-repeat="subitem in all.sub"
+       id="subitem-{{$index}}">
       {{subitem.label}}
       {{subitem.total/result.recipe.yield | noDecimal}}{{subitem.unit}}
       {{(subitem.total/result.recipe.yield)/subitem.daily | percentage}}%

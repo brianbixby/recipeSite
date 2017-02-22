@@ -9,7 +9,6 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   var homeComp = this;
   homeComp.searchTerm = 'chicken';
   homeComp.results = undefined;
-
   // homeComp.$watch('searchTerm', function(newVal, oldVal) {
   //   homeComp.search();
   // });
@@ -55,8 +54,6 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   //
   //   var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
   // });
-
-
 }
 
 HomeCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];

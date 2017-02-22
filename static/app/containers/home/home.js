@@ -36,6 +36,27 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
       console.log("HTTP failed:", res);
     });
   }
+  // $(document).ready(function () {
+  //   var pieData = [
+  //       {
+  //         value: 35,
+  //         color:"#E15115"
+  //       },
+  //       {
+  //         value : 100-35,
+  //         color : "#FFC425"
+  //       },
+  //       {
+  //         value : 100-35,
+  //         color : "#83CC1C"
+  //       }
+  //
+  //     ];
+  //
+  //   var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(pieData,{percentageInnerCutout : 80});
+  // });
+
+
 }
 
 HomeCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];

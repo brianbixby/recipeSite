@@ -64,11 +64,22 @@ span.line {
 
 #bold {
   font-weight: bold;
+  color: #000000;
+}
+
+.advancedSearchSectionHeader {
+  font-weight: bold;
+}
+
+#advancedSearchDiv {
+  text-align: center;
+  margin: 8px auto;
 }
 
 #searchFilterText {
-  text-align: center;
   margin-top: 10px;
+  text-decoration: none;
+  color: #747D7D;
 }
 
 #smallFont {
@@ -78,6 +89,15 @@ span.line {
 #searchFilterDownArrow {
   font-size: 11px;
   color: #8EE11B;
+}
+
+#searchFilter {
+  text-align: center;
+  margin-top: 8px;
+}
+
+#advancedSearchIcon {
+
 }
 
 @media only screen and (min-width : 320px) {

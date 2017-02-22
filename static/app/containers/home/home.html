@@ -27,8 +27,60 @@
   <!-- SEARCH FILTER -->
   <div id="searchFilter" class="row">
     <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
-      <p id="searchFilterText"><span id="smallFont"> REFINE SEARCH BY </span> <span id="bold"> Calories, Diet, Ingredients </span> <span id="searchFilterDownArrow" class="glyphicon glyphicon-triangle-bottom"></span> </p>
+      <a id="searchFilterText"
+      ng-click="advancedSearchHidingOpen = !advancedSearchHidingOpen">
+        <span id="smallFont"> REFINE SEARCH BY </span> <span id="bold"> Calories, Diet, Ingredients </span> <span id="searchFilterDownArrow" class="glyphicon glyphicon-triangle-bottom"></span>
+      </a>
     </div>
+  </div>
+
+  <div class="row">
+    <div id="advancedSearchDiv" class="col-xs-12 col-lg-12" ng-show="advancedSearchHidingOpen">
+        <form id="advancedSearch-form"  role="form"  target="_blank" ng-submit="homeComp.search()">
+          <div class="row">
+            <div class="col-xs-2 col-lg-2">
+              <span class="advancedSearchSectionHeader">Calories</span> <br>
+              From
+              To
+              <span class="advancedSearchSectionHeader">Ingredients</span> <br>
+              Up to
+            </div>
+            <div class="col-xs-2 col-lg-2">
+              <span class="advancedSearchSectionHeader">Diet</span> <br>
+              Vegetarian
+              Vegan
+              Paleo
+              High-Fiber
+              High-Protein
+              Low-Carb
+            </div>
+            <div class="col-xs-2 col-lg-2">
+              <br>
+              Low-Fat
+              Low-Sodium
+              Low-Sugar
+              Alcohol-Free
+              Balanced
+            </div>
+            <div class="col-xs-2 col-lg-2">
+              <span class="advancedSearchSectionHeader">Allergies</span> <br>
+              Gluten
+              Dairy
+              Eggs
+              Soy
+              Wheat
+            </div>
+            <div class="col-xs-2 col-lg-2">
+              <br>
+              Fish
+              Shellfish
+              Tree Nuts
+              Peanuts
+              <button type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">Done</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
   </div>
 
 

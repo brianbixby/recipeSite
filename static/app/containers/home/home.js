@@ -9,8 +9,6 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   var homeComp = this;
   homeComp.searchTerm = '';
   homeComp.results = undefined;
-  homeComp.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-  homeComp.data = [300, 500, 100];
   // homeComp.$watch('searchTerm', function(newVal, oldVal) {
   //   homeComp.search();
   // });

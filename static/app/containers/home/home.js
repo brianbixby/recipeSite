@@ -59,13 +59,13 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
     console.log(obj);
     if(obj == '') {
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte%'+homeComp.minCals+',%lte%'+homeComp.maxCals+'',
+        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'',
         method: "GET",
       }
     }
     else {
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte%'+homeComp.minCals+',%lte%'+homeComp.maxCals+'&health='+homeComp.allergy+'',
+        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'&health='+homeComp.allergy+'',
         method: "GET",
       }
     }

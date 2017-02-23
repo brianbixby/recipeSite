@@ -28,6 +28,10 @@ angular.module('App', ['ui.router'])
         url: '/signup',
         component: 'signupComp'
       })
+      .state('searchResultsState', {
+        url: '/search?q=',
+        component: 'searchResultsComp'
+      })
       .state('testState', {
         url: '/test',
         component: 'testComp'

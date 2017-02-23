@@ -8,8 +8,12 @@ angular.module('App')
 function HomeCompCtrl($http, $location, Auth, UserService) {
   var homeComp = this;
   homeComp.searchTerm = '';
+  homeComp.userInput = '';
   homeComp.results = undefined;
   homeComp.dict = {};
+  homeComp.maxIngredients = 10;
+  homeComp.minIngredients = 0;
+  // homeComp.dietaryRestrictions = 'vegan';
   // var advSearchForm = (angular.element(document.getElementById('advancedSearch-form"')));
   // homeComp.$watch('homeComp.searchTerm', function(newVal, oldVal) {
   //   homeComp.search();
@@ -17,13 +21,14 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
 
   homeComp.multipleAdvancedSearchTerms = function() {
     homeComp.searchTerm = '';
-    console.log('multipleAdvancedSearchTerms');
+    console.log('homeComp.searchTerm: ', homeComp.searchTerm);
     for (key in homeComp.dict) {
       if(homeComp.dict[key]) {
         homeComp.searchTerm += [key] + ', ';
       }
     }
-    console.log(homeComp.searchTerm);
+    homeComp.searchTerm += homeComp.userInput + ', ';
+    console.log('homeComp.dietaryRestrictions: ', homeComp.searchTerm);
     homeComp.search();
     // var formData = $("#advancedSearch-form").serialize();
     // console.log("formData:", formData);
@@ -46,11 +51,12 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
 
   homeComp.search = function() {
     var req = {
-      url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa',
+      url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxIngredients+'',
       method: "GET",
     }
 
     $http(req).then(function success(res) {
+      console.log('max ingredients: ',homeComp.maxIngredients);
       console.log('search term: ', homeComp.searchTerm);
       console.log("HTTP success:", res);
       if (res.data.Error === "Not found!") {

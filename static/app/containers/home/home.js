@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl($http, $location, Auth, UserService) {
+function HomeCompCtrl($http, $state, $location, Auth, UserService) {
   var homeComp = this;
   homeComp.searchTerm = '';
   homeComp.userInput = '';
@@ -17,13 +17,13 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   homeComp.minCals = 0;
   homeComp.maxCals = 10000;
   homeComp.queryString = '';
-  // homeComp.dietaryRestrictions = 'vegan';
-  // var advSearchForm = (angular.element(document.getElementById('advancedSearch-form"')));
+
   // homeComp.$watch('homeComp.searchTerm', function(newVal, oldVal) {
   //   homeComp.search();
   // });
 
-  homeComp.multipleAdvancedSearchTerms = function() {
+  homeComp.multipleAdvancedSearchTerms = function($event) {
+    $event.preventDefault();
     console.log('homeComp.userInput ', homeComp.userInput );
     homeComp.searchTerm = '';
     console.log('homeComp.searchTerm: ', homeComp.searchTerm);
@@ -59,40 +59,41 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   homeComp.search = function(obj) {
     console.log(obj);
     if(obj == '') {
-      homeComp.queryString = homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'';
+      homeComp.queryString = '?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'';
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.queryString,
+        url: 'https://api.edamam.com/search'+homeComp.queryString,
         method: "GET",
       }
     }
     else {
-      homeComp.queryString = homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'&health='+homeComp.allergy+'';
+      homeComp.queryString = '?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte '+homeComp.minCals+',lte '+homeComp.maxCals+'&health='+homeComp.allergy+'';
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.queryString,
+        url: 'https://api.edamam.com/search'+homeComp.queryString,
         method: "GET",
       }
     }
-
-    $http(req).then(function success(res) {
-      console.log('max ingredients: ',homeComp.maxResults);
-      console.log('search term: ', homeComp.searchTerm);
-      console.log('homeComp.allergy: ', homeComp.allergy);
-      console.log("HTTP success:", res);
-      if (res.data.Error === "Not found!") {
-        homeComp.results = [];
-      } else {
-        homeComp.results = res.data.hits;
-        console.log(homeComp.results);
-        console.log('results length: ', homeComp.results.length);
-      }
-    }, function failure(res) {
-      homeComp.results = [];
-      console.log("HTTP failed:", res);
-    });
+    window.location = '/search'+homeComp.queryString;
   }
+    // $http(req).then(function success(res) {
+    //   console.log('max ingredients: ',homeComp.maxResults);
+    //   console.log('search term: ', homeComp.searchTerm);
+    //   console.log('homeComp.allergy: ', homeComp.allergy);
+    //   console.log("HTTP success:", res);
+    //   if (res.data.Error === "Not found!") {
+    //     homeComp.results = [];
+    //   } else {
+    //     homeComp.results = res.data.hits;
+    //     console.log(homeComp.results);
+    //     console.log('results length: ', homeComp.results.length);
+    //   }
+    // }, function failure(res) {
+    //   homeComp.results = [];
+    //   console.log("HTTP failed:", res);
+    // });
+
   homeComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
   };
 }
 
-HomeCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];
+HomeCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];

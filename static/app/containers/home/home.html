@@ -13,7 +13,7 @@
   <!-- SEARCH BAR -->
   <div id="searchBar" class="row">
     <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
-      <form id="search-form"  role="form"  target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms()">
+      <form id="search-form"  role="form" target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms($event)">
         <div class="input-group">
           <input type="text" class="form-control search-form" ng-model="homeComp.userInput" placeholder="Find the best recipes from across the web..." />
           <span class="input-group-btn">
@@ -36,7 +36,7 @@
 
   <div class="row">
     <div id="advancedSearchDiv" class="col-xs-12 col-lg-12" ng-show="advancedSearchHidingOpen">
-        <form id="advancedSearch-form"  role="form"  target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms()">
+        <form id="advancedSearch-form" role="form"  target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms($event)">
           <div class="row">
             <div class="col-xs-3 col-lg-3">
               <span class="advancedSearchSectionHeader">Calories</span> <br>
@@ -64,19 +64,6 @@
                 <label><input type="checkbox" ng-model="homeComp.dict['Low-Sugar']" value="Low-Sugar">  Low-Sugar</label><br>
                 <label><input type="checkbox" ng-model="homeComp.dict['Alcohol-Free']" value="Alcohol-Free">  Alcohol-Free</label><br>
                 <label><input type="checkbox" ng-model="homeComp.dict['Balanced']" value="Balanced">  Balanced</label><br>
-                <!-- balanced: {{homeComp.dict['balanced']}}
-                vegetarian: {{homeComp.dict['vegetarian']}}
-                vegan: {{homeComp.dict['vegan']}}
-                paleo: {{homeComp.dict['paleo']}}
-                fiber: {{homeComp.dict['high-fiber']}}
-                protein: {{homeComp.dict['high-protein']}}
-                carb: {{homeComp.dict['low-carb']}}
-                fat: {{homeComp.dict['low-fat']}}
-                sodium: {{homeComp.dict['low-sodium']}}
-                sugar: {{homeComp.dict['low-sugar']}}
-                alcohol: {{homeComp.dict['alcohol-free']}}
-                homeComp.dict: {{homeComp.dict}}
-                homeComp.searchTerm: {{homeComp.searchTerm}} -->
               </div>
             </div>
             <div class="col-xs-3 col-lg-3">
@@ -89,7 +76,7 @@
                 <br>
                 <br>
               </div>
-              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
+              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#advancedSearch-form" onclick="return false"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
             </div>
           </div>
         </form>
@@ -98,7 +85,7 @@
 
 
 
-  <div ng-show="homeComp.results !== undefined && homeComp.results.length === 0">
+  <!-- <div ng-show="homeComp.results !== undefined && homeComp.results.length === 0">
     Sorry, no results.
   </div>
 
@@ -154,5 +141,5 @@
       </p>
     </div>
 
-  </div>
+  </div> -->
 </div>

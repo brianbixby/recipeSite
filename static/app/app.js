@@ -29,7 +29,7 @@ angular.module('App', ['ui.router'])
         component: 'signupComp'
       })
       .state('searchResultsState', {
-        url: '/search?q=',
+        url: '/search?q&app_id&app_key&from&to&calories&health',
         component: 'searchResultsComp'
       })
       .state('testState', {

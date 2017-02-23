@@ -85,25 +85,26 @@
             <div class="col-xs-2 col-lg-2">
               <b>Allergies</b> <br>
               <div class="allergyFormGroup" class="form-group">
-                <label><input type="checkbox" name="allergyLabels" value="Gluten">  Gluten</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Dairy">  Dairy</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Eggs">  Eggs</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Soy">  Soy</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Wheat">  Wheat</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="gluten-free">  Gluten</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="dairy-free">  Dairy</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="egg-free">  Eggs</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="soy-free">  Soy</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="wheat-free">  Wheat</label><br>
               </div>
             </div>
             <div class="col-xs-2 col-lg-2">
               <br>
               <div class="allergyFormGroup" class="form-group">
-                <label><input type="checkbox" name="allergyLabels" value="Fish">  Fish</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Shellfish">  Shellfish</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Tree Nuts">  Tree Nuts</label><br>
-                <label><input type="checkbox" name="allergyLabels" value="Peanuts">  Peanuts</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="fish-free">  Fish</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="shellfish-free">  Shellfish</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="tree-nut-free">  Tree Nuts</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="peanut-free">  Peanuts</label><br>
                 <br>
                 <br>
               </div>
               <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
             </div>
+            homeComp.allergy {{homeComp.allergy}}
             <div class="col-xs-1 col-lg-1">
             </div>
           </div>

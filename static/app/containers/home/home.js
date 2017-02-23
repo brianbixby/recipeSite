@@ -11,9 +11,11 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   homeComp.userInput = '';
   homeComp.results = undefined;
   homeComp.dict = {};
-  homeComp.maxIngredients = 10;
+  homeComp.maxResults = 10;
   homeComp.minIngredients = 0;
   homeComp.allergy = '';
+  homeComp.minCals = 0;
+  homeComp.maxCals = 10000;
   // homeComp.dietaryRestrictions = 'vegan';
   // var advSearchForm = (angular.element(document.getElementById('advancedSearch-form"')));
   // homeComp.$watch('homeComp.searchTerm', function(newVal, oldVal) {
@@ -57,19 +59,19 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
     console.log(obj);
     if(obj == '') {
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxIngredients+'',
+        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte%'+homeComp.minCals+',%lte%'+homeComp.maxCals+'',
         method: "GET",
       }
     }
     else {
       var req = {
-        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxIngredients+'&health='+homeComp.allergy+'',
+        url: 'https://api.edamam.com/search?q='+homeComp.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+homeComp.maxResults+'&calories=gte%'+homeComp.minCals+',%lte%'+homeComp.maxCals+'&health='+homeComp.allergy+'',
         method: "GET",
       }
     }
 
     $http(req).then(function success(res) {
-      console.log('max ingredients: ',homeComp.maxIngredients);
+      console.log('max ingredients: ',homeComp.maxResults);
       console.log('search term: ', homeComp.searchTerm);
       console.log('homeComp.allergy: ', homeComp.allergy);
       console.log("HTTP success:", res);
@@ -78,6 +80,7 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
       } else {
         homeComp.results = res.data.hits;
         console.log(homeComp.results);
+        console.log('results length: ', homeComp.results.length);
       }
     }, function failure(res) {
       homeComp.results = [];

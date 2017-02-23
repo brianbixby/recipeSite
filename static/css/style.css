@@ -118,7 +118,7 @@ span.line {
   padding-bottom: 37px;
 }
 
-#textBoxInputMaxIngred, #textBoxInputMaxCal, #textBoxInputMinCal {
+#textBoxInputMaxResults, #textBoxInputMaxCal, #textBoxInputMinCal {
   float: right;
 }
 

@@ -69,11 +69,12 @@ span.line {
 
 .advancedSearchSectionHeader {
   font-weight: bold;
+  text-align: left;
 }
 
 #advancedSearchDiv {
-  text-align: center;
   margin: 8px auto;
+  border: 1px solid gray;
 }
 
 #searchFilterText {
@@ -96,8 +97,29 @@ span.line {
   margin-top: 8px;
 }
 
+.dietFormGroup, .allergyFormGroup {
+  text-align: left;
+  font-weight: normal !important;
+}
+
+#advancedSearchFormButton {
+  float: right;
+}
+
+#advancedSearch-form {
+  padding: 20px;
+}
+
 #advancedSearchIcon {
 
+}
+
+#advancedSearchButtonText {
+  padding-bottom: 37px;
+}
+
+#textBoxInputMaxIngred, #textBoxInputMaxCal, #textBoxInputMinCal {
+  float: right;
 }
 
 @media only screen and (min-width : 320px) {

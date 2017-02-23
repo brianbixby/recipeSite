@@ -36,47 +36,74 @@
 
   <div class="row">
     <div id="advancedSearchDiv" class="col-xs-12 col-lg-12" ng-show="advancedSearchHidingOpen">
-        <form id="advancedSearch-form"  role="form"  target="_blank" ng-submit="homeComp.search()">
+        <form id="advancedSearch-form"  role="form"  target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms()">
           <div class="row">
+            <div class="col-xs-1 col-lg-1">
+            </div>
             <div class="col-xs-2 col-lg-2">
               <span class="advancedSearchSectionHeader">Calories</span> <br>
-              From
-              To
+              <span>From <input id="textBoxInputMinCal" type="text" style="width:50px;"></span> <br>
+              <span>To <input id="textBoxInputMaxCal" type="text" style="width:50px;"></span><br>
               <span class="advancedSearchSectionHeader">Ingredients</span> <br>
-              Up to
+              <span>Up to <input id="textBoxInputMaxIngred" type="text" style="width:50px;"></span><br>
             </div>
             <div class="col-xs-2 col-lg-2">
               <span class="advancedSearchSectionHeader">Diet</span> <br>
-              Vegetarian
-              Vegan
-              Paleo
-              High-Fiber
-              High-Protein
-              Low-Carb
+              <div class="dietFormGroup" class="form-group">
+                <label><input type="checkbox" ng-model="homeComp.dict['Vegetarian']" name="Vegetarian" value="true">  Vegetarian</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Vegan']" name="Vegan" value="true">  Vegan</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Paleo']" name="Paleo">  Paleo</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['High-Fiber']" name="High-Fiber">  High-Fiber</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['High-Protein']" name="High-Protein">  High-Protein</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Low-Carb']" name="Low-Carb">  Low-Carb</label><br>
+              </div>
             </div>
             <div class="col-xs-2 col-lg-2">
               <br>
-              Low-Fat
-              Low-Sodium
-              Low-Sugar
-              Alcohol-Free
-              Balanced
+              <div class="dietFormGroup" class="form-group">
+                <label><input type="checkbox" ng-model="homeComp.dict['Low-Fat']" value="Low-Fat">  Low-Fat</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Low-Sodium']" value="Low-Sodium">  Low-Sodium</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Low-Sugar']" value="Low-Sugar">  Low-Sugar</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Alcohol-Free']" value="Alcohol-Free">  Alcohol-Free</label><br>
+                <label><input type="checkbox" ng-model="homeComp.dict['Balanced']" value="Balanced">  Balanced</label><br>
+                balanced: {{homeComp.dict['balanced']}}
+                vegetarian: {{homeComp.dict['vegetarian']}}
+                vegan: {{homeComp.dict['vegan']}}
+                paleo: {{homeComp.dict['paleo']}}
+                fiber: {{homeComp.dict['high-fiber']}}
+                protein: {{homeComp.dict['high-protein']}}
+                carb: {{homeComp.dict['low-carb']}}
+                fat: {{homeComp.dict['low-fat']}}
+                sodium: {{homeComp.dict['low-sodium']}}
+                sugar: {{homeComp.dict['low-sugar']}}
+                alcohol: {{homeComp.dict['alcohol-free']}}
+                homeComp.dict: {{homeComp.dict}}
+                homeComp.searchTerm: {{homeComp.searchTerm}}
+              </div>
             </div>
             <div class="col-xs-2 col-lg-2">
-              <span class="advancedSearchSectionHeader">Allergies</span> <br>
-              Gluten
-              Dairy
-              Eggs
-              Soy
-              Wheat
+              <b>Allergies</b> <br>
+              <div class="allergyFormGroup" class="form-group">
+                <label><input type="checkbox" name="allergyLabels" value="Gluten">  Gluten</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Dairy">  Dairy</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Eggs">  Eggs</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Soy">  Soy</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Wheat">  Wheat</label><br>
+              </div>
             </div>
             <div class="col-xs-2 col-lg-2">
               <br>
-              Fish
-              Shellfish
-              Tree Nuts
-              Peanuts
-              <button type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">Done</span></button>
+              <div class="allergyFormGroup" class="form-group">
+                <label><input type="checkbox" name="allergyLabels" value="Fish">  Fish</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Shellfish">  Shellfish</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Tree Nuts">  Tree Nuts</label><br>
+                <label><input type="checkbox" name="allergyLabels" value="Peanuts">  Peanuts</label><br>
+                <br>
+                <br>
+              </div>
+              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
+            </div>
+            <div class="col-xs-1 col-lg-1">
             </div>
           </div>
         </form>

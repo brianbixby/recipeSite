@@ -9,9 +9,40 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
   var homeComp = this;
   homeComp.searchTerm = '';
   homeComp.results = undefined;
-  // homeComp.$watch('searchTerm', function(newVal, oldVal) {
+  homeComp.dict = {};
+  // var advSearchForm = (angular.element(document.getElementById('advancedSearch-form"')));
+  // homeComp.$watch('homeComp.searchTerm', function(newVal, oldVal) {
   //   homeComp.search();
   // });
+
+  homeComp.multipleAdvancedSearchTerms = function() {
+    homeComp.searchTerm = '';
+    console.log('multipleAdvancedSearchTerms');
+    for (key in homeComp.dict) {
+      if(homeComp.dict[key]) {
+        homeComp.searchTerm += [key] + ', ';
+      }
+    }
+    console.log(homeComp.searchTerm);
+    homeComp.search();
+    // var formData = $("#advancedSearch-form").serialize();
+    // console.log("formData:", formData);
+    // homeComp.splittingFormData(formData);
+  }
+
+  // homeComp.splittingFormData = function(obj) {
+  //   console.log('splittingformdatainput: ', obj);
+  //   var string = '';
+  //   while(obj.split('=true&')) {
+  //     sting += obj.split('=true&')[0] + ', ';
+  //     console.log('obj: ', obj);
+  //   }
+  //   if(obj.split('=true')) {
+  //     sting += obj.split('=true')[0];
+  //   }
+  //   homeComp.searchTerm = string;
+  //   homeComp.search();
+  // }
 
   homeComp.search = function() {
     var req = {
@@ -20,6 +51,7 @@ function HomeCompCtrl($http, $location, Auth, UserService) {
     }
 
     $http(req).then(function success(res) {
+      console.log('search term: ', homeComp.searchTerm);
       console.log("HTTP success:", res);
       if (res.data.Error === "Not found!") {
         homeComp.results = [];

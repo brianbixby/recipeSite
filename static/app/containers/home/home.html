@@ -38,9 +38,7 @@
     <div id="advancedSearchDiv" class="col-xs-12 col-lg-12" ng-show="advancedSearchHidingOpen">
         <form id="advancedSearch-form"  role="form"  target="_blank" ng-submit="homeComp.multipleAdvancedSearchTerms()">
           <div class="row">
-            <div class="col-xs-1 col-lg-1">
-            </div>
-            <div class="col-xs-2 col-lg-2">
+            <div class="col-xs-3 col-lg-3">
               <span class="advancedSearchSectionHeader">Calories</span> <br>
               <span>From <input id="textBoxInputMinCal" type="text" style="width:50px;"/></span> <br>
               <span>To <input id="textBoxInputMaxCal" type="text" style="width:50px;"/></span><br>
@@ -48,7 +46,7 @@
               <span>Up to <input id="textBoxInputMaxIngred" type="text" style="width:50px;" ng-model="homeComp.maxIngredients"/></span><br>
               max ingredients {{homeComp.maxIngredients}}
             </div>
-            <div class="col-xs-2 col-lg-2">
+            <div class="col-xs-3 col-lg-3">
               <span class="advancedSearchSectionHeader">Diet</span> <br>
               <div class="dietFormGroup" class="form-group">
                 <label><input type="checkbox" ng-model="homeComp.dict['Vegetarian']" value="Vegetarian">  Vegetarian</label><br>
@@ -59,7 +57,7 @@
                 <label><input type="checkbox" ng-model="homeComp.dict['Low-Carb']" value="Low-Carb">  Low-Carb</label><br>
               </div>
             </div>
-            <div class="col-xs-2 col-lg-2">
+            <div class="col-xs-3 col-lg-3">
               <br>
               <div class="dietFormGroup" class="form-group">
                 <label><input type="checkbox" ng-model="homeComp.dict['Low-Fat']" value="Low-Fat">  Low-Fat</label><br>
@@ -67,7 +65,7 @@
                 <label><input type="checkbox" ng-model="homeComp.dict['Low-Sugar']" value="Low-Sugar">  Low-Sugar</label><br>
                 <label><input type="checkbox" ng-model="homeComp.dict['Alcohol-Free']" value="Alcohol-Free">  Alcohol-Free</label><br>
                 <label><input type="checkbox" ng-model="homeComp.dict['Balanced']" value="Balanced">  Balanced</label><br>
-                balanced: {{homeComp.dict['balanced']}}
+                <!-- balanced: {{homeComp.dict['balanced']}}
                 vegetarian: {{homeComp.dict['vegetarian']}}
                 vegan: {{homeComp.dict['vegan']}}
                 paleo: {{homeComp.dict['paleo']}}
@@ -79,33 +77,20 @@
                 sugar: {{homeComp.dict['low-sugar']}}
                 alcohol: {{homeComp.dict['alcohol-free']}}
                 homeComp.dict: {{homeComp.dict}}
-                homeComp.searchTerm: {{homeComp.searchTerm}}
+                homeComp.searchTerm: {{homeComp.searchTerm}} -->
               </div>
             </div>
-            <div class="col-xs-2 col-lg-2">
+            <div class="col-xs-3 col-lg-3">
               <b>Allergies</b> <br>
               <div class="allergyFormGroup" class="form-group">
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="gluten-free">  Gluten</label><br>
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="dairy-free">  Dairy</label><br>
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="egg-free">  Eggs</label><br>
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="soy-free">  Soy</label><br>
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="wheat-free">  Wheat</label><br>
-              </div>
-            </div>
-            <div class="col-xs-2 col-lg-2">
-              <br>
-              <div class="allergyFormGroup" class="form-group">
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="fish-free">  Fish</label><br>
-                <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="shellfish-free">  Shellfish</label><br>
                 <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="tree-nut-free">  Tree Nuts</label><br>
                 <label><input type="radio" name="allergyOption" ng-model="homeComp.allergy" value="peanut-free">  Peanuts</label><br>
                 <br>
                 <br>
+                <br>
+                <br>
               </div>
               <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#advancedSearch-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
-            </div>
-            homeComp.allergy {{homeComp.allergy}}
-            <div class="col-xs-1 col-lg-1">
             </div>
           </div>
         </form>

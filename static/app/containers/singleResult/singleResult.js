@@ -66,8 +66,8 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
       if(favorite === false) {
         console.log("favorite create error");
       } else {
-        console.log("got favorite: ", res);
-        $location.path('/');
+        console.log("got favorite");
+        // $location.path('/');
       }
     });
     };

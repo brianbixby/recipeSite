@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 
 var FavoriteSchema = mongoose.Schema({
   name: String,
@@ -40,8 +40,7 @@ UserSchema.set('toJSON', {
 
 UserSchema.methods.authenticated = function(password) {
   var user = this;
-  var isAuthenticated = compareSync(password, user.password);
-  // var isAuthenticated = bcrypt.compareSync(password, user.password);
+  var isAuthenticated = bcrypt.compareSync(password, user.password);
   return isAuthenticated ? user : false;
 };
 
@@ -49,7 +48,7 @@ UserSchema.pre('save', function(next) {
   if (!this.isModified('password')) {
     next();
   } else {
-    // this.password = bcrypt.hashSync(this.password, 10);
+    this.password = bcrypt.hashSync(this.password, 10);
     next();
   }
 });

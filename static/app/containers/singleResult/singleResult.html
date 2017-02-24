@@ -8,52 +8,51 @@
   <div ng-show="singleResultComp.results !== undefined && singleResultComp.results.length > 0"
        ng-repeat="result in singleResultComp.results">
 
-    <h1>{{result.recipe.label}}</h1>
+    <h1>{{result.label}}</h1>
 
-    <img ng-if="result.recipe.image !== 'N/A'" ng-src="{{result.recipe.image}}" />
-    <img ng-if="result.recipe.image === 'N/A'" src="not-found.jpg">
+    <img ng-src="{{result.image}}" />
 
-    <p>See full recipe on: <a href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
+    <p>See full recipe on: <a href="{{result.url}}">{{result.source}}</a></p>
     <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
       <span class="glyphicon glyphicon-bookmark"></span> Save
     </button>
 
-    <h2>{{result.recipe.ingredientLines.length}} Ingredients</h2>
-    <p ng-repeat="each in result.recipe.ingredients">{{each.text}}</p>
+    <h2>{{result.ingredientLines.length}} Ingredients</h2>
+    <p ng-repeat="each in result.ingredients">{{each.text}}</p>
 
     <h2>Nutrition </h2>
-    <p> {{result.recipe.calories/result.recipe.yield | noDecimal}} <br> CALORIES/SERVING</p>
-    <p> {{result.recipe.calories/result.recipe.yield | dailyCalPercent}}%<BR> DAILY VALUE</p>
-    <P> {{result.recipe.yield}} <BR> SERVINGS </P>
+    <p> {{result.calories/result.yield | noDecimal}} <br> CALORIES/SERVING</p>
+    <p> {{result.calories/result.yield | dailyCalPercent}}%<BR> DAILY VALUE</p>
+    <P> {{result.yield}} <BR> SERVINGS </P>
 
     <h2>Preparation</h2>
     <p>
       <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
          Instructions
-      </button> on <a href="{{result.recipe.url}}">{{result.recipe.source}}</a>
+      </button> on <a href="{{result.url}}">{{result.source}}</a>
     </p>
 
-    <h3> <a href="#">{{result.recipe.dietLabels | showFirst}}</a> <a href="#">{{result.recipe.healthLabels | showFirst}}</a></h3>
+    <h3> <a href="#">{{result.dietLabels | showFirst}}</a> <a href="#">{{result.healthLabels | showFirst}}</a></h3>
 
     <canvas id="doughnut" class="chart chart-doughnut"
       chart-data="singleResultComp.data" chart-labels="singleResultComp.labels">
     </canvas>
 
-    <div ng-repeat="all in result.recipe.digest">
+    <div ng-repeat="all in result.digest">
       <p>
         <a id="all-{{$index}}"
         ng-click="all.isHidingOpen = !all.isHidingOpen"
         ng-class="{'glyphicon glyphicon-play': all.sub.length > 0, 'disable-link': !all.sub }">
         {{all.label }}</a>
-        {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}
-        {{(all.total/result.recipe.yield)/all.daily | percentage}}%
+        {{all.total/result.yield | noDecimal}}{{all.unit}}
+        {{(all.total/result.yield)/all.daily | percentage}}%
       </p>
       <p ng-show="all.isHidingOpen"
          ng-repeat="subitem in all.sub"
          id="subitem-{{$index}}">
         {{subitem.label}}
-        {{subitem.total/result.recipe.yield | noDecimal}}{{subitem.unit}}
-        {{(subitem.total/result.recipe.yield)/subitem.daily | percentage}}%
+        {{subitem.total/result.yield | noDecimal}}{{subitem.unit}}
+        {{(subitem.total/result.yield)/subitem.daily | percentage}}%
       </p>
     </div>
 

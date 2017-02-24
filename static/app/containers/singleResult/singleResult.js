@@ -38,7 +38,7 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
       if (res.data.Error === "Not found!") {
         singleResultComp.results = [];
       } else {
-        singleResultComp.results = res.data.hits;
+        singleResultComp.results = res.data;
         console.log(singleResultComp.results);
       }
     }, function failure(res) {

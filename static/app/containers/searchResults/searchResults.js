@@ -15,6 +15,11 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
 
   $(document).ready(function(){
     searchResultsComp.search();
+    $(document).on('mouseenter', '.tile', function () {
+        $(this).find(":button").show();
+    }).on('mouseleave', '.tile', function () {
+        $(this).find(":button").hide();
+    });
   });
 
   // $(function() {

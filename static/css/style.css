@@ -1,9 +1,15 @@
+.searchResultsDisplay {
+  margin: auto;
+}
+
 .tile {
   height: 330px;
   width: 220px;
   border: 1px rgba(220,220,220, 0.7) solid;
   margin-bottom: 20px;
   margin-right: 10px;
+  position: relative;
+  float:left;
 }
 
 .tilePic {
@@ -22,6 +28,7 @@
 .tileLabel:hover {
   color: #8EE11B;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .tileCalorieAndIngredientText {
@@ -298,4 +305,15 @@ span.line {
 	background: -webkit-gradient(linear, left top, left bottom, from(#6DB30A), to(#8EE01B));
 	background: -moz-linear-gradient(top,  #6DB30A,  #8EE01B);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6DB30A', endColorstr='#8EE01B');
+}
+
+.allResultsFavButton {
+  position: absolute;
+  background-color: white;
+  color: #8EE11B;
+  left: 132px;
+  top: 15px;
+}
+.allResultsFavButtonText {
+  color: black;
 }

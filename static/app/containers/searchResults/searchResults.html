@@ -3,12 +3,15 @@
     Sorry, no results.
   </div>
 
-  <div class="row">
+  <div class="row searchResultsDisplay">
     <div >
       <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length > 0"
            ng-repeat="result in searchResultsComp.results">
         <!-- <div>  class="col-xs-6  com-md-3 col-lg-3"> -->
-        <div class="tile col-sm-4">
+        <div class="tile col-sm-4 col-xs-3">
+          <button class="allResultsFavButton" type="btn btn-default" style="display: none;">
+            <span class="glyphicon glyphicon-bookmark"></span> <span class="allResultsFavButtonText">Save</span>
+          </button>
           <img class="tilePic" ng-click="searchResultsComp.goToSingleResult(result.recipe.uri)" ng-src="{{result.recipe.image}}" />
           <p class="tileLabel">{{result.recipe.label}}</p>
           <p class="tileCalorieAndIngredientText"><span class="tileCalorieText"> <span class="tileCalorieTextNumber"> {{result.recipe.calories/result.recipe.yield | noDecimal}}</span> CALORIES   </span>   |   <span class="tileIngredientText"> <span class="tileIngredientTextNumber"> {{result.recipe.ingredientLines.length}} </span>   INGREDIENTS</span</p>
@@ -17,13 +20,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-    <!-- <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
-      <span class="glyphicon glyphicon-bookmark"></span> Save
-    </button> -->
 
 
   </div>

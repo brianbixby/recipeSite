@@ -22,14 +22,14 @@ router.route('/').get(function(req, res) {
   });
 });
 
-Models.User.findById    (req.params.id, function(err, user) {
-  user.favorites.push(req.body.favorite);
-  user.save(function(err) {
-      console.log(err);
-      if (err) return res.status(500).send(err);
-      res.send({'message': 'success'});
-  });
-});
+//   Models.User.findById    (req.params.id, function(err, user) {
+//   user.favorites.push(req.body.favorite);
+//   user.save(function(err) {
+//       console.log(err);
+//       if (err) return res.status(500).send(err);
+//       res.send({'message': 'success'});
+//   });
+// });
 
 
 router.get('/:id', function(req, res) {

@@ -1,3 +1,70 @@
+.tile {
+  height: 330px;
+  width: 220px;
+  border: 1px rgba(220,220,220, 0.7) solid;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.tilePic {
+  padding-top: 10px;
+  height: 200px;
+  width: 100%;
+}
+
+.tileLabel {
+  padding: 2px;
+  padding-top: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.tileLabel:hover {
+  color: #8EE11B;
+  text-decoration: none;
+}
+
+.tileCalorieAndIngredientText {
+  padding: 2px;
+  margin: auto;
+  border-top: 1px rgba(220,220,220, 0.7) solid;
+  border-bottom: 1px rgba(220,220,220, 0.7) solid;
+  font-size: 10px;
+  text-align: center;
+  color:gray;
+}
+
+.tileCalorieTextNumber {
+  font-size: 14px;
+  color: #8EE11B;
+}
+
+.tileIngredientTextNumber {
+  font-size: 14px;
+  color: #8EE11B;
+}
+
+.tileIngredientText {
+
+}
+
+.tileCalorieText {
+
+}
+
+.tileSource {
+  display: flex;
+  color: gray;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.tileSource:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+
 .disable-link {
   pointer-events: none;
   cursor: default;
@@ -127,8 +194,17 @@ span.line {
 }
 
 
-@media only screen and (min-width : 480px) {
+@media only screen and (max-width : 620px) {
+  .tile {
+    height: 150px;
+    width: 130px;
+  }
 
+  .tilePic {
+    height: 119px;
+    width: 119px;
+    padding: 5px;
+  }
 }
 
 

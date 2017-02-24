@@ -1,6 +1,4 @@
 <div class="container">
-  <h1> Single Result Page </h1>
-
   <div ng-show="singleResultComp.results !== undefined && singleResultComp.results.length === 0">
     Sorry, no results.
   </div>
@@ -13,7 +11,7 @@
     <img ng-src="{{result.image}}" />
 
     <p>See full recipe on: <a href="{{result.url}}">{{result.source}}</a></p>
-    <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+    <button ng-click="singleResultComp.addToFavorite(result.uri, result.label)" id="favoriteButton" type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
       <span class="glyphicon glyphicon-bookmark"></span> Save
     </button>
 

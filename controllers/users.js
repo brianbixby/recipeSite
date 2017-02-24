@@ -1,5 +1,5 @@
 var express = require('express');
-var User = require('../models/user');
+var User = require('../models/schemas');
 var router = express.Router();
 
 // creating a user
@@ -29,6 +29,22 @@ router.get('/:id', function(req, res) {
     if (err) return res.status(500).send(err);
 
     return res.send(user);
+  });
+});
+
+router.route('/:id').post(function(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    user.favorites.push(req.body.favorite);
+    user.save(function(err) {
+        console.log(err);
+        if (err) return res.status(500).send(err);
+        res.send({'message': 'success'});
+    });
+  });
+}).put(function(req, res) {
+  User.findByIdAndUpdate(req.params.id, {favorites: req.body.favorites}, function(err, user) {
+    if (err) return res.status(500).send(err);
+    res.send({'message': 'success'});
   });
 });
 

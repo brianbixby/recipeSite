@@ -17,6 +17,10 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
     searchResultsComp.search();
   });
 
+  // $(function() {
+  //   $('.col-xs-6').matchHeight();
+  // });
+
   searchResultsComp.search = function() {
     searchResultsComp.windUrl = window.location.href.split("/search").pop();
     console.log('searchResultsComp.initialLoad: ', searchResultsComp.initialLoad);

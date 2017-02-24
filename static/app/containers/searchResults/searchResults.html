@@ -1,61 +1,30 @@
 <div class="container">
-  <h1> Search Results</h1>
-
   <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length === 0">
     Sorry, no results.
   </div>
 
-  <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length > 0"
-       ng-repeat="result in searchResultsComp.results">
-
-    <h1>{{result.recipe.label}}</h1>
-
-
-    <img ng-click="searchResultsComp.goToSingleResult(result.recipe.uri)" ng-src="{{result.recipe.image}}" />
-
-    <p>See full recipe on: <a href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
-    <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
-      <span class="glyphicon glyphicon-bookmark"></span> Save
-    </button>
-
-    <h2>{{result.recipe.ingredientLines.length}} Ingredients</h2>
-    <p ng-repeat="each in result.recipe.ingredients">{{each.text}}</p>
-
-    <h2>Nutrition </h2>
-    <p> {{result.recipe.calories/result.recipe.yield | noDecimal}} <br> CALORIES/SERVING</p>
-    <p> {{result.recipe.calories/result.recipe.yield | dailyCalPercent}}%<BR> DAILY VALUE</p>
-    <P> {{result.recipe.yield}} <BR> SERVINGS </P>
-
-    <h2>Preparation</h2>
-    <p>
-      <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
-         Instructions
-      </button> on <a href="{{result.recipe.url}}">{{result.recipe.source}}</a>
-    </p>
-
-    <h3> <a href="#">{{result.recipe.dietLabels | showFirst}}</a> <a href="#">{{result.recipe.healthLabels | showFirst}}</a></h3>
-
-    <canvas id="doughnut" class="chart chart-doughnut"
-      chart-data="searchResultsComp.data" chart-labels="searchResultsComp.labels">
-    </canvas>
-
-    <div ng-repeat="all in result.recipe.digest">
-      <p>
-        <a id="all-{{$index}}"
-        ng-click="all.isHidingOpen = !all.isHidingOpen"
-        ng-class="{'glyphicon glyphicon-play': all.sub.length > 0, 'disable-link': !all.sub }">
-        {{all.label }}</a>
-        {{all.total/result.recipe.yield | noDecimal}}{{all.unit}}
-        {{(all.total/result.recipe.yield)/all.daily | percentage}}%
-      </p>
-      <p ng-show="all.isHidingOpen"
-         ng-repeat="subitem in all.sub"
-         id="subitem-{{$index}}">
-        {{subitem.label}}
-        {{subitem.total/result.recipe.yield | noDecimal}}{{subitem.unit}}
-        {{(subitem.total/result.recipe.yield)/subitem.daily | percentage}}%
-      </p>
+  <div class="row">
+    <div >
+      <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length > 0"
+           ng-repeat="result in searchResultsComp.results">
+        <!-- <div>  class="col-xs-6  com-md-3 col-lg-3"> -->
+        <div class="tile col-sm-4">
+          <img class="tilePic" ng-click="searchResultsComp.goToSingleResult(result.recipe.uri)" ng-src="{{result.recipe.image}}" />
+          <p class="tileLabel">{{result.recipe.label}}</p>
+          <p class="tileCalorieAndIngredientText"><span class="tileCalorieText"> <span class="tileCalorieTextNumber"> {{result.recipe.calories/result.recipe.yield | noDecimal}}</span> CALORIES   </span>   |   <span class="tileIngredientText"> <span class="tileIngredientTextNumber"> {{result.recipe.ingredientLines.length}} </span>   INGREDIENTS</span</p>
+          <p><a class="tileSource" href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+
+
+    <!-- <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+      <span class="glyphicon glyphicon-bookmark"></span> Save
+    </button> -->
+
 
   </div>
 </div>

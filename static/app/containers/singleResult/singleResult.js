@@ -45,7 +45,25 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
       singleResultComp.results = [];
       console.log("HTTP failed:", res);
     });
+
+
   }
+
+  singleResultComp.favorite = {
+    name: '',
+    uri: ''
+  };
+
+// result.uri, result.label
+  singleResultComp.addToFavorite = function(uri, label) {
+    console.log('uri', uri);
+    console.log('label', label);
+      // Favorite.save(singleResultComp.favorite, function success(data) {
+      //   $location.path('/');
+      // }, function error(data) {
+      //   console.log(data);
+      // });
+    };
 
   singleResultComp.isLoggedIn = function() {
     return Auth.isLoggedIn();

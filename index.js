@@ -15,7 +15,7 @@ var app = express();
 
 // mongoose models and connection
 var mongoose = require('mongoose');
-var User = require('./models/user');
+var User = require('./models/schemas');
 mongoose.connect('mongodb://localhost/recipesite');
 
 //Decode POST data in JSON and URL encoded formats
@@ -28,7 +28,7 @@ app.use(require('morgan')('dev'));
 
 
 
-// app.use('/api/recipes', require('./controllers/recipes'));
+app.use('/api/favorites', require('./controllers/favorites'));
 // app.use('/api/users', require('./controllers/users'));
 
 // Replace the above routes with the following

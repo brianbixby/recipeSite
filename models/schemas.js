@@ -1,6 +1,15 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+var FavoriteSchema = mongoose.Schema({
+  name: String,
+  uri: String
+}, {
+  collection: 'Favorites'
+});
+//
+// var Favorite = mongoose.model('Favorite', FavoriteSchema);
+
 var UserSchema = mongoose.Schema({
   name: String,
   email: {
@@ -11,15 +20,19 @@ var UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
-});
+  },
+  favorite: [FavoriteSchema]
+  }, {
+  collection: 'Users'
+  });
 
 UserSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
       id: ret._id,
       email: ret.email,
-      name: ret.name
+      name: ret.name,
+      favorite: ret.favorite
     };
     return returnJson;
   }
@@ -29,15 +42,8 @@ UserSchema.methods.authenticated = function(password) {
   var user = this;
   var isAuthenticated = bcrypt.compareSync(password, user.password);
   return isAuthenticated ? user : false;
-//   if(isAuthenticated) {
-//     return user;
-//   } else {
-//     return false;
-//   }
 };
 
-// hook; before this is saved we ask if password is odified; if not its okay
-// otherwise we hash password and reset password
 UserSchema.pre('save', function(next) {
   if (!this.isModified('password')) {
     next();
@@ -46,5 +52,12 @@ UserSchema.pre('save', function(next) {
     next();
   }
 });
+//
+// var User = mongoose.model('User', UserSchema);
 
-module.exports = mongoose.model('User', UserSchema);
+// module.exports = {
+//   Favorite: Favorite,
+//   User: User
+// }
+
+module.exports = mongoose.model('User', UserSchema, 'Favorite', FavoriteSchema);

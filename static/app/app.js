@@ -32,6 +32,10 @@ angular.module('App', ['ui.router'])
         url: '/search?q&app_id&app_key&from&to&calories&health',
         component: 'searchResultsComp'
       })
+      .state('singleResultState', {
+        url: '/recipe?r&app_id&app_key',
+        component: 'singleResultComp'
+      })
       .state('testState', {
         url: '/test',
         component: 'testComp'

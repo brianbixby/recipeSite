@@ -1,17 +1,17 @@
 <div class="container">
-  <h1> Search Results</h1>
+  <h1> Single Result Page </h1>
 
-  <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length === 0">
+  <div ng-show="singleResultComp.results !== undefined && singleResultComp.results.length === 0">
     Sorry, no results.
   </div>
 
-  <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length > 0"
-       ng-repeat="result in searchResultsComp.results">
+  <div ng-show="singleResultComp.results !== undefined && singleResultComp.results.length > 0"
+       ng-repeat="result in singleResultComp.results">
 
     <h1>{{result.recipe.label}}</h1>
 
-
-    <img ng-click="searchResultsComp.goToSingleResult(result.recipe.uri)" ng-src="{{result.recipe.image}}" />
+    <img ng-if="result.recipe.image !== 'N/A'" ng-src="{{result.recipe.image}}" />
+    <img ng-if="result.recipe.image === 'N/A'" src="not-found.jpg">
 
     <p>See full recipe on: <a href="{{result.recipe.url}}">{{result.recipe.source}}</a></p>
     <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
@@ -36,7 +36,7 @@
     <h3> <a href="#">{{result.recipe.dietLabels | showFirst}}</a> <a href="#">{{result.recipe.healthLabels | showFirst}}</a></h3>
 
     <canvas id="doughnut" class="chart chart-doughnut"
-      chart-data="searchResultsComp.data" chart-labels="searchResultsComp.labels">
+      chart-data="singleResultComp.data" chart-labels="singleResultComp.labels">
     </canvas>
 
     <div ng-repeat="all in result.recipe.digest">

@@ -48,11 +48,16 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
       searchResultsComp.results = [];
       console.log("HTTP failed:", res);
     });
+  }
 
   searchResultsComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
   };
-}
+
+  searchResultsComp.goToSingleResult = function(obj) {
+    searchResultsComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
+    window.location = '/recipe' + searchResultsComp.queryString;
+  }
 
 }
 

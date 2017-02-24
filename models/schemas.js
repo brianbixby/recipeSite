@@ -8,7 +8,7 @@ var FavoriteSchema = mongoose.Schema({
   collection: 'Favorites'
 });
 //
-// var Favorite = mongoose.model('Favorite', FavoriteSchema);
+var Favorite = mongoose.model('Favorite', FavoriteSchema);
 
 var UserSchema = mongoose.Schema({
   name: String,
@@ -53,11 +53,12 @@ UserSchema.pre('save', function(next) {
   }
 });
 //
-// var User = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
 
-// module.exports = {
-//   Favorite: Favorite,
-//   User: User
-// }
-
-module.exports = mongoose.model('User', UserSchema, 'Favorite', FavoriteSchema);
+module.exports = {
+  Favorite: Favorite,
+  User: User
+}
+//
+// module.exports = mongoose.model('User', UserSchema)
+// , 'Favorite', FavoriteSchema);

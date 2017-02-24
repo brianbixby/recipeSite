@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'singleResultComp'
 });
 
-function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
+function SingleResultCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
   var singleResultComp = this;
   singleResultComp.windUrl = window.location.href.split("/search").pop();
   console.log('singleResultComp.windUrl: ', singleResultComp.windUrl );
@@ -58,11 +58,18 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
   singleResultComp.addToFavorite = function(uri, label) {
     console.log('uri', uri);
     console.log('label', label);
-      // Favorite.save(singleResultComp.favorite, function success(data) {
-      //   $location.path('/');
-      // }, function error(data) {
-      //   console.log(data);
-      // });
+    var params = {
+      name: label,
+      uri: uri
+    };
+    FavoriteService.createFavorite(params).then(function(favorite) {
+      if(favorite === false) {
+        console.log("favorite create error");
+      } else {
+        console.log("got favorite: ", res);
+        $location.path('/');
+      }
+    });
     };
 
   singleResultComp.isLoggedIn = function() {
@@ -71,4 +78,4 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
 
 }
 
-SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];
+SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];

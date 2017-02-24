@@ -15,7 +15,7 @@ var app = express();
 
 // mongoose models and connection
 var mongoose = require('mongoose');
-var User = require('./models/schemas');
+var Models = require('./models/schemas');
 mongoose.connect('mongodb://localhost/recipesite');
 
 //Decode POST data in JSON and URL encoded formats

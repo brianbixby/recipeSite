@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'searchResultsComp'
 });
 
-function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
+function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
   var searchResultsComp = this;
   searchResultsComp.windUrl = window.location.href.split("/search").pop();
   console.log('searchResultsComp.windUrl: ', searchResultsComp.windUrl );
@@ -70,4 +70,4 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
 
 }
 
-SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];
+SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];

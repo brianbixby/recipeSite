@@ -7,42 +7,44 @@
     <div ng-show="singleResultComp.results !== undefined && singleResultComp.results.length > 0"
          ng-repeat="result in singleResultComp.results">
       <div class="col-xs-6 col-lg-5">
-        <img ng-src="{{result.image}}" />
-        <p>{{result.ingredientLines.length}} Ingredients</p>
-        <p ng-repeat="each in result.ingredients">{{each.text}}</p>
-        <p>Preparation</p>
+        <img class="individualResultImg" ng-src="{{result.image}}" />
+        <p class="individualResultIngredientCount">{{result.ingredientLines.length}} Ingredients</p>
+        <p class="individualResultIngredients" ng-repeat="each in result.ingredients">{{each.text}}</p>
+        <p class="individualResultPrep">Preparation</p>
         <p>
-          <button type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+          <button type="button" class="btn btn-default" aria-pressed="false" autocomplete="off">
              Instructions
           </button> on <a href="{{result.url}}">{{result.source}}</a>
         </p>
       </div>
       <div class="col-xs-6 col-lg-5">
-        <p>{{result.label}}</p>
-        <p>See full recipe on: <a href="{{result.url}}">{{result.source}}</a></p>
-        <button ng-click="singleResultComp.addToFavorite(result.uri, result.label)" id="favoriteButton" type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+        <p class="individualResultLabel">{{result.label}}</p>
+        <p class="individualResultSource">See full recipe on: <a href="{{result.url}}">{{result.source}}</a></p>
+        <button class="individualResultFavButton" ng-click="singleResultComp.addToFavorite(result.uri, result.label)" id="favoriteButton" type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
           <span class="glyphicon glyphicon-bookmark"></span> Save
         </button>
-        <h5>Nutrition </h5>
-        <p> {{result.calories/result.yield | noDecimal}} <br> CALORIES/SERVING</p>
-        <p> {{result.calories/result.yield | dailyCalPercent}}%<BR> DAILY VALUE</p>
-        <P> {{result.yield}} <BR> SERVINGS </P>
-        <h5> <a href="#">{{result.dietLabels | showFirst}}</a> <a href="#">{{result.healthLabels | showFirst}}</a></h5>
+        <h5> <a class="individualResultDietLabel" href="#">{{result.dietLabels | showFirst}}</a> <a class="individualResultHealthLabel" href="#">{{result.healthLabels | showFirst}}</a></h5>
+        <h5 class="individualResultNutrition">Nutrition </h5>
+        <div class="individualResultNutritionDiv">
+          <p class="individualResultNutritionBox"> <span class="individualResultNutritionNumber">{{result.calories/result.yield | noDecimal}} </span><br> <span class="individualResultNutritionLable">CALORIES/SERVING </span></p>
+          <p class="individualResultNutritionBox"> <span class="individualResultNutritionNumber">{{result.calories/result.yield | dailyCalPercent}}% </span><BR><span class="individualResultNutritionLable"> DAILY VALUE</span></p>
+          <P class="individualResultNutritionBox"> <span class="individualResultNutritionNumber">{{result.yield}}</span> <BR><span class="individualResultNutritionLable"> SERVINGS </span> </P>
+        </div>
         <div ng-repeat="all in result.digest">
           <p>
-            <a id="all-{{$index}}"
+            <a class="individualResultNutritionButton"id="all-{{$index}}"
             ng-click="all.isHidingOpen = !all.isHidingOpen"
             ng-class="{'glyphicon glyphicon-play': all.sub.length > 0, 'disable-link': !all.sub }">
-            {{all.label }}</a>
-            {{all.total/result.yield | noDecimal}}{{all.unit}}
-            {{(all.total/result.yield)/all.daily | percentage}}%
+            <span class="individualResultNutritionItemFacts">{{all.label }}</span></a>
+            <span class="individualResultNutritionNumberFacts">{{all.total/result.yield | noDecimal}}{{all.unit}}</span>
+            <span class="individualResultNutritionPercentFacts">{{(all.total/result.yield)/all.daily | percentage}}%</span>
           </p>
           <p ng-show="all.isHidingOpen"
              ng-repeat="subitem in all.sub"
              id="subitem-{{$index}}">
-            {{subitem.label}}
-            {{subitem.total/result.yield | noDecimal}}{{subitem.unit}}
-            {{(subitem.total/result.yield)/subitem.daily | percentage}}%
+            <span class="individualResultNutritionItemDetailedFacts">{{subitem.label}} </span>
+            <span class="individualResultNutritionNumberDetailedFacts">{{subitem.total/result.yield | noDecimal}}{{subitem.unit}} </span>
+            <span class="individualResultNutritionPercentDetailedFacts">{{(subitem.total/result.yield)/subitem.daily | percentage}}% </span>
           </p>
         </div>
       </div>

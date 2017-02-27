@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'searchResultsComp'
 });
 
-function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
+function SearchResultsCompCtrl($http, $state, $location, Auth, UserService) {
   var searchResultsComp = this;
   searchResultsComp.windUrl = window.location.href.split("/search").pop();
   console.log('searchResultsComp.windUrl: ', searchResultsComp.windUrl );
@@ -21,10 +21,6 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
         $(this).find(":button").hide();
     });
   });
-
-  // $(function() {
-  //   $('.col-xs-6').matchHeight();
-  // });
 
   searchResultsComp.search = function() {
     searchResultsComp.windUrl = window.location.href.split("/search").pop();
@@ -70,4 +66,4 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
 
 }
 
-SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];
+SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];

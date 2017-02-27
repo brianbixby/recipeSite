@@ -3,13 +3,7 @@ angular.module('App', ['ui.router'])
     function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)
       // specify custom types for $resource
       {
-      //   $resourceProvider.defaults.actions = {
-      //   create: {method: 'POST'},
-      //   get:    {method: 'GET'},
-      //   getAll: {method: 'GET', isArray:true},
-      //   update: {method: 'PUT'},
-      //   delete: {method: 'DELETE'}
-      // };
+        
       $urlRouterProvider.otherwise('/');
 
       $httpProvider.interceptors.push('AuthInterceptor');
@@ -36,11 +30,10 @@ angular.module('App', ['ui.router'])
         url: '/recipe?r&app_id&app_key',
         component: 'singleResultComp'
       })
-      .state('testState', {
-        url: '/test',
-        component: 'testComp'
+      .state('profileState', {
+        url: '/profile',
+        component: 'profileComp'
       });
-
       //Removes # symbol for our routes
       $locationProvider.html5Mode(true);
     }

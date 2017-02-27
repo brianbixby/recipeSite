@@ -45,8 +45,6 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
       singleResultComp.results = [];
       console.log("HTTP failed:", res);
     });
-
-
   }
 
   singleResultComp.favorite = {
@@ -62,7 +60,7 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
       name: label,
       uri: uri
     };
-    FavoriteService.createFavorite(params).then(function(favorite) {
+    UserService.createFavorite(params).then(function(favorite) {
       if(favorite === false) {
         console.log("favorite create error");
       } else {
@@ -70,8 +68,7 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
         // $location.path('/');
       }
     });
-    };
-
+  };
   singleResultComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
   };

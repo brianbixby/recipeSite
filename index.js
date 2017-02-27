@@ -29,12 +29,13 @@ app.use(require('morgan')('dev'));
 
 
 
-app.use('/api/favorites', require('./controllers/favorites'));
+// app.use('/api/favorites', require('./controllers/favorites'));
 // app.use('/api/users', require('./controllers/users'));
+
 
 // Replace the above routes with the following
 
-// app.use('/api/recipes', expressJWT({secret: secret}), require('./controllers/recipes'));
+// app.use('/api/favorites', expressJWT({secret: secret}), require('./controllers/users'));
 app.use('/api/users', expressJWT({secret: secret}).unless({
   path: [{ url: '/api/users', methods: ['POST'] }]
 }), require('./controllers/users'));
@@ -50,7 +51,7 @@ app.use(function (err, req, res, next) {
 // sign in stuff happens here
 // POST /api/auth - if authenticated, return a signed JWT
 app.post('/api/auth', function(req, res) {
-  User.findOne({ email: req.body.email }, function(err, user) {
+  Models.User.findOne({ email: req.body.email }, function(err, user) {
     // return 401 if error or no user
     if (err || !user) return res.status(401).send({ message: 'User not found' });
 

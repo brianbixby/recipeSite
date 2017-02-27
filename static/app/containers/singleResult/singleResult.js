@@ -5,10 +5,10 @@ angular.module('App')
   controllerAs: 'singleResultComp'
 });
 
-function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
+function SingleResultCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
   var singleResultComp = this;
   singleResultComp.windUrl = window.location.href.split("/search").pop();
-  console.log('singleResultComp.windUrl: ', singleResultComp.windUrl );
+  // console.log('singleResultComp.windUrl: ', singleResultComp.windUrl );
   singleResultComp.queryString = '';
   singleResultComp.results = undefined;
   singleResultComp.quotedWindUrl = '';
@@ -34,16 +34,16 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
     }
 
     $http(req).then(function success(res) {
-      console.log("HTTP success:", res);
+      // console.log("HTTP success:", res);
       if (res.data.Error === "Not found!") {
         singleResultComp.results = [];
       } else {
         singleResultComp.results = res.data;
-        console.log(singleResultComp.results);
+        // console.log(singleResultComp.results);
       }
     }, function failure(res) {
       singleResultComp.results = [];
-      console.log("HTTP failed:", res);
+      // console.log("HTTP failed:", res);
     });
   }
 
@@ -54,17 +54,17 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
 
 // result.uri, result.label
   singleResultComp.addToFavorite = function(uri, label) {
-    console.log('uri', uri);
-    console.log('label', label);
+    // console.log('uri', uri);
+    // console.log('label', label);
     var params = {
       name: label,
       uri: uri
     };
-    UserService.createFavorite(params).then(function(favorite) {
+    FavoriteService.createFavorite(params).then(function(favorite) {
       if(favorite === false) {
-        console.log("favorite create error");
+        // console.log("favorite create error");
       } else {
-        console.log("got favorite");
+        // console.log("got favorite");
         // $location.path('/');
       }
     });
@@ -75,4 +75,4 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService) {
 
 }
 
-SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];
+SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];

@@ -29,19 +29,19 @@ router.get('/:id', function(req, res) {
 });
 
 router.route('/:id').post(function(req, res) {
-  console.log('req.user.id', req.user.id);
-  console.log('req.body', req.body);
+  // console.log('req.user.id', req.user.id);
+  // console.log('req.body', req.body);
   Models.User.findById(req.user.id, function(err, user) {
     user.favorite.push(req.body);
     user.save(function(err) {
-        console.log(err);
+        // console.log(err);
         if (err) return res.status(500).send(err);
         res.send({'message': 'success'});
     });
   });
 }).put(function(req, res) {
-  console.log('req.user.id', req.user.id);
-  console.log('req.body', req.body);
+  // console.log('req.user.id', req.user.id);
+  // console.log('req.body', req.body);
   Models.User.findByIdAndUpdate(req.user.id, {favorite: req.body}, function(err, user) {
     if (err) return res.status(500).send(err);
     // user.favorite.update()

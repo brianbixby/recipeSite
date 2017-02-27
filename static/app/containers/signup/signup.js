@@ -12,16 +12,15 @@ function SignupCompCtrl($http, $state, $location, Auth, UserService) {
     password: ''
   };
   signupComp.userSignup = function() {
-  // to implement
   var params = {
     email: signupComp.user.email,
     password: signupComp.user.password
   };
   UserService.createAccount(params).then(function(user) {
     if(user === false) {
-      console.log("user create error");
+      // console.log("user create error");
     } else {
-      console.log("got user: ", signupComp.user);
+      // console.log("got user: ", signupComp.user);
       UserService.login(params)
       $location.path('/');
     }

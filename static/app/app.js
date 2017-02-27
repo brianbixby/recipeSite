@@ -1,9 +1,8 @@
 angular.module('App', ['ui.router'])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
     function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)
-      // specify custom types for $resource
       {
-        
+
       $urlRouterProvider.otherwise('/');
 
       $httpProvider.interceptors.push('AuthInterceptor');

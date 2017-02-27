@@ -52,13 +52,10 @@ UserSchema.pre('save', function(next) {
     next();
   }
 });
-//
+
 var User = mongoose.model('User', UserSchema);
 
 module.exports = {
   Favorite: Favorite,
   User: User
 }
-//
-// module.exports = mongoose.model('User', UserSchema)
-// , 'Favorite', FavoriteSchema);

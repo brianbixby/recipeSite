@@ -1,7 +1,4 @@
 angular.module('App')
-// .factory('UserId', ['$resource', function($resource) {
-// 	return $resource('/api/users/:id');
-// }])
 .factory('Auth', ['$window', function($window) {
   return {
     saveToken: function(token) {

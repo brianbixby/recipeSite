@@ -1,17 +1,8 @@
 <h1>Profile</h1>
-<!-- <h1 ng-model="profileComp.favorite">{{profileComp.favorite}} </h1> -->
-<!-- <div id="profile-header">
-  <h1 ng-model="profileComp." id="">
-    <span class="">{{profileComp.}}</span>
-  </h1>
-</div> -->
-
 <div ng-show="profileComp.favorite !== undefined && profileComp.favorite.length > 0"
      ng-repeat="fav in profileComp.favorite">
   <div class="">
-    <p class=""><a href="{{fav.uri}}">{{fav.name}}</a></p>
-    <img class="" ng-src="{{fav.img}}" />
-    <!-- <p class="tileCalorieAndIngredientText"><span class="tileCalorieText"> <span class="tileCalorieTextNumber"> {{result.recipe.calories/result.recipe.yield | noDecimal}}</span> CALORIES   </span>   |   <span class="tileIngredientText"> <span class="tileIngredientTextNumber"> {{result.recipe.ingredientLines.length}} </span>   INGREDIENTS</span</p>
-    <p><a class="tileSource" href="{{result.recipe.url}}">{{result.recipe.source}}</a></p> -->
+    <p ng-click="profileComp.goToSingleResult(fav.uri)" class="">{{fav.name}}</p>
+    <img ng-click="profileComp.goToSingleResult(fav.uri)" class="" ng-src="{{fav.img}}" />
   </div>
 </div>

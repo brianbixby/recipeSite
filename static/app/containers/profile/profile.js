@@ -20,14 +20,14 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
         console.log("favorite get error");
       } else {
         profileComp.favorite = favorite;
-        console.log('favorite', favorite[0]);
-        console.log('favorite.name', favorite[0].name);
-        console.log('favorite.uri', favorite[0].uri);
-
-        // $location.path('/');
+        console.log('favorite', favorite);
       }
     });
   };
+  profileComp.goToSingleResult = function(obj) {
+    profileComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
+    window.location = '/recipe' + profileComp.queryString;
+  }
 }
 
 ProfileCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];

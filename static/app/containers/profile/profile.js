@@ -24,10 +24,23 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
       }
     });
   };
+  
   profileComp.goToSingleResult = function(obj) {
     profileComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
     window.location = '/recipe' + profileComp.queryString;
   }
+
+  profileComp.deleteFavorite = function(favId) {
+    console.log('delete favId', favId);
+    FavoriteService.deleteFavorite(favId).then(function(favorite) {
+      if(favorite === false) {
+        console.log("favorite delete error");
+      } else {
+        console.log("deleted favorite");
+      }
+    });
+  };
+
 }
 
 ProfileCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];

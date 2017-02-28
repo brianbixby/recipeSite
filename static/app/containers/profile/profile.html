@@ -4,5 +4,6 @@
   <div class="">
     <p ng-click="profileComp.goToSingleResult(fav.uri)" class="">{{fav.name}}</p>
     <img ng-click="profileComp.goToSingleResult(fav.uri)" class="" ng-src="{{fav.img}}" />
+    <button ng-click="profileComp.deleteFavorite(fav._id)" class="button orange">Remove favorite</button>
   </div>
 </div>

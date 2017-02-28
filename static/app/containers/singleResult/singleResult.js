@@ -53,7 +53,6 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
     img: ''
   };
 
-// result.uri, result.label
   singleResultComp.addToFavorite = function(uri, label, img) {
     // console.log('uri', uri);
     // console.log('label', label);

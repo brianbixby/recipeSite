@@ -27,7 +27,13 @@ router.route('/')
       // user.favorite.update()
       res.send({'message': 'success'});
     });
-  });
+  }).delete(function(req, res) {
+    Models.User.findByIdAndRemove(req.user.id, {favorite: req.data}, function(err, user) {
+          if (err) return res.send(err);
+          console.log('deleting fav by id', favorite);
+          return res.send(favorite);
+        });
+    });
 
 router.route('/:id')
   .post(function(req, res) {

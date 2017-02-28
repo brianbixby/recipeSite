@@ -20,7 +20,7 @@
       <div class="col-xs-6 col-lg-5">
         <p class="individualResultLabel">{{result.label}}</p>
         <p class="individualResultSource">See full recipe on: <a href="{{result.url}}">{{result.source}}</a></p>
-        <button class="individualResultFavButton" ng-click="singleResultComp.addToFavorite(result.uri, result.label)" id="favoriteButton" type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+        <button class="individualResultFavButton" ng-click="singleResultComp.addToFavorite(result.uri, result.label, result.image)" id="favoriteButton" type="button" class="btn btn-primary" aria-pressed="false" autocomplete="off">
           <span class="glyphicon glyphicon-bookmark"></span> Save
         </button>
         <h5> <a class="individualResultDietLabel" href="#">{{result.dietLabels | showFirst}}</a> <a class="individualResultHealthLabel" href="#">{{result.healthLabels | showFirst}}</a></h5>

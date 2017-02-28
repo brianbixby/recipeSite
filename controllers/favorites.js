@@ -1,14 +1,20 @@
-// var express = require('express');
-// var Models = require('../models/schemas');
-// var router = express.Router();
+var express = require('express');
+var Models = require('../models/schemas');
+var router = express.Router();
 //
 // router.route('/').get(function(req, res) {
-//     Models.Favorite.find(function(err, favorites) {
-//       if (err) return res.send(err);
-//       console.log('sending favorites', favorites);
-//       return res.send(favorites);
+//       Models.User.findById(req.data.user, function(err, user) {
+//         if (err) return res.status(500).send(err);
+//         console.log('req.data.user', req.data.user);
+//         console.log('user.favorite', user.favorite);
+//         return res.send(user.favorite);
+//       });
 //     });
-//   })
+    // Models.User.findById(req.user.id, function(err, user) {
+    //   user.favorite.push(req.body);
+
+//
+//
 //   .post(function(req, res) {
 //     Models.Favorite.findOne({ uri: req.body.uri }, function(err, favorite) {
 //       if (favorite) return res.status(400).send({ message: 'Favorite already exists' });
@@ -48,4 +54,4 @@
 //     });
 //   });
 //
-// module.exports = router;
+module.exports = router;

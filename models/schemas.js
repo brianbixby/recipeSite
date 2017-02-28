@@ -3,7 +3,8 @@ var bcrypt = require('bcrypt');
 
 var FavoriteSchema = mongoose.Schema({
   name: String,
-  uri: String
+  uri: String,
+  img: String
 }, {
   collection: 'Favorites'
 });

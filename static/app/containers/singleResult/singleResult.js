@@ -49,16 +49,18 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
 
   singleResultComp.favorite = {
     name: '',
-    uri: ''
+    uri: '',
+    img: ''
   };
 
 // result.uri, result.label
-  singleResultComp.addToFavorite = function(uri, label) {
+  singleResultComp.addToFavorite = function(uri, label, img) {
     // console.log('uri', uri);
     // console.log('label', label);
     var params = {
       name: label,
-      uri: uri
+      uri: uri,
+      img: img,
     };
     FavoriteService.createFavorite(params).then(function(favorite) {
       if(favorite === false) {

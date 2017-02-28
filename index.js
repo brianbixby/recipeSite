@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 //Observe server activity
 app.use(require('morgan')('dev'));
 
-// app.use('/api/users', require('./controllers/users'));
+app.use('/api/favorites', require('./controllers/favorites'));
 // Replaced the above route with the following
 
 app.use('/api/users', expressJWT({secret: secret}).unless({

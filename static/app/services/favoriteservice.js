@@ -25,7 +25,7 @@ angular.module('App')
     },
     deleteFavorite: function(params) {
       var URL ='/api/users/:id';
-      console.log('DELETE-params: ', params);
+      // console.log('DELETE-params: ', params);
       var req = {
         url: URL,
         method: "DELETE",
@@ -33,16 +33,16 @@ angular.module('App')
       };
       return $http(req).then(function(res) {
         if(res.status !== 200) {
-          console.log("couldn't delete favorite");
-          console.log("req.data:", req.data);
+          // console.log("couldn't delete favorite");
+          // console.log("req.data:", req.data);
           return false;
         }
-        console.log("Favorite deleted response: ", res.data);
-        console.log("req.data:", req.data);
+        // console.log("Favorite deleted response: ", res.data);
+        // console.log("req.data:", req.data);
         return res.data;
       }, function error(res) {
-        console.log("req.data:", req.data);
-        console.log("error response:", res);
+        // console.log("req.data:", req.data);
+        // console.log("error response:", res);
       });
     },
     displayFavorite: function(params) {

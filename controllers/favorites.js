@@ -1,7 +1,9 @@
-var express = require('express');
-var Models = require('../models/schemas');
-var router = express.Router();
+// NOT CURRENTLY USING!!!!!!!!!!!!
 //
+// var express = require('express');
+// var Models = require('../models/schemas');
+// var router = express.Router();
+// 
 // router.route('/').get(function(req, res) {
 //       Models.User.findById(req.data.user, function(err, user) {
 //         if (err) return res.status(500).send(err);
@@ -10,9 +12,9 @@ var router = express.Router();
 //         return res.send(user.favorite);
 //       });
 //     });
-    // Models.User.findById(req.user.id, function(err, user) {
-    //   user.favorite.push(req.body);
-
+//     Models.User.findById(req.user.id, function(err, user) {
+//       user.favorite.push(req.body);
+//
 //
 //
 //   .post(function(req, res) {
@@ -54,4 +56,4 @@ var router = express.Router();
 //     });
 //   });
 //
-module.exports = router;
+// module.exports = router;

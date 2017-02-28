@@ -28,7 +28,7 @@ router.route('/')
       res.send({'message': 'success'});
     });
   }).delete(function(req, res) {
-    Models.User.findByIdAndRemove(req.user.id, {favorite: req.data}, function(err, user) {
+    Models.User.favorite.findByIdAndRemove(req.user.id + req.data, function(err, user) {
           if (err) return res.send(err);
           console.log('deleting fav by id', favorite);
           return res.send(favorite);
@@ -63,10 +63,12 @@ router.route('/:id')
         res.send({'message': 'success'});
       });
     }).delete(function(req, res) {
-      Models.User.findByIdAndRemove(req.user.id, function(err) {
+      Models.User.favorite.findByIdAndRemove((req.user.id + req.data), function(err) {
+        console.log('req.data', req.data);
+        console.log('req.body.data', req.body.data);
+        console.log('req.user.id', req.user.id);
         if (err) return res.send(err);
-        // console.log('deleting fav by id', favorite);
-        return res.send(favorite);
+        console.log('deleting fav by id', favorite);
       });
     });
 

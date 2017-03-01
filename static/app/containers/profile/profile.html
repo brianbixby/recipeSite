@@ -1,9 +1,13 @@
 <h1>Profile</h1>
 <div ng-show="profileComp.favorite !== undefined && profileComp.favorite.length > 0"
      ng-repeat="fav in profileComp.favorite">
-  <div class="">
-    <p ng-click="profileComp.goToSingleResult(fav.uri)" class="">{{fav.name}}</p>
-    <img ng-click="profileComp.goToSingleResult(fav.uri)" class="" ng-src="{{fav.img}}" />
-    <button ng-click="profileComp.deleteFavorite(fav._id)" class="button orange">Remove favorite</button>
+  <div class="favTile col-sm-4 col-xs-3">
+    <div ng-click="profileComp.goToSingleResult(fav.uri)" class="favTileWoutDeleteButton">
+      <img class="favPic" ng-src="{{fav.img}}" />
+      <p class="favLabel">{{fav.name}}</p>
+    </div>
+    <button ng-click="profileComp.deleteFavorite(fav._id)" class="DButton red profileDeleteButton" type="btn btn-default">
+      <span class="profileDeleteButtonIcon glyphicon glyphicon-remove"> <span class="profileDeleteButtonText">Delete</span>
+    </button>
   </div>
 </div>

@@ -54,7 +54,7 @@ router.route('/:id')
             console.log("USERS: ", user[i].favorite);
           for(var j = 0; j < user[i].favorite.length; j++) {
             console.log("favorites: ", user[i].favorite[j]._id);
-          if(user[i].favorite[j]._id == Object.keys(req.query)[0]) {
+          if(user[i].favorite[j]._id == Object.keys(req.data)) {
            console.log("Found a match");
            user[i].favorite[j].remove({_id: Object.keys(req.query)[0] }, function(err) {
              if (err) console.log(err);

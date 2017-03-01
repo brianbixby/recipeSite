@@ -2,11 +2,11 @@
   <!-- SEARCH BAR -->
   <div id="searchBarDiv" class="row">
     <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
-      <form id="search-form"  role="form" target="_blank" ng-submit="multipleAdvancedSearchTerms($event)">
+      <form id="searchBarForm"  role="form" target="_blank" ng-submit="multipleAdvancedSearchTerms($event)">
         <div class="input-group">
-          <input type="text" class="form-control search-form" ng-model="userInput" placeholder="Find the best recipes from across the web..." />
+          <input id="searchBarInput" type="text" class="form-control searchBarForm" ng-model="userInput" placeholder="Find the best recipes from across the web..." />
           <span class="input-group-btn">
-            <button type="submit" class="btn search-btn" data-target="#search-form"><i class="fa fa-search"></i></button>
+            <button id="searchBarButton" type="submit" class="btn search-btn" data-target="#searchBarForm"><i class="fa fa-search"></i></button>
           </span>
         </div>
       </form>
@@ -65,7 +65,7 @@
                 <br>
                 <br>
               </div>
-              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#search-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
+              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#searchBarForm"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
             </div>
           </div>
         </form>

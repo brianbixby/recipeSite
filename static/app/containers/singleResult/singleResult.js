@@ -47,29 +47,29 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
     });
   }
 
-  singleResultComp.favorite = {
-    name: '',
-    uri: '',
-    img: ''
-  };
-
-  singleResultComp.addToFavorite = function(uri, label, img) {
-    // console.log('uri', uri);
-    // console.log('label', label);
-    var params = {
-      name: label,
-      uri: uri,
-      img: img,
-    };
-    FavoriteService.createFavorite(params).then(function(favorite) {
-      if(favorite === false) {
-        // console.log("favorite create error");
-      } else {
-        // console.log("got favorite");
-        // $location.path('/');
-      }
-    });
-  };
+  // singleResultComp.favorite = {
+  //   name: '',
+  //   uri: '',
+  //   img: ''
+  // };
+  //
+  // singleResultComp.addToFavorite = function(uri, label, img) {
+  //   // console.log('uri', uri);
+  //   // console.log('label', label);
+  //   var params = {
+  //     name: label,
+  //     uri: uri,
+  //     img: img,
+  //   };
+  //   FavoriteService.createFavorite(params).then(function(favorite) {
+  //     if(favorite === false) {
+  //       // console.log("favorite create error");
+  //     } else {
+  //       // console.log("got favorite");
+  //       // $location.path('/');
+  //     }
+  //   });
+  // };
   singleResultComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
   };

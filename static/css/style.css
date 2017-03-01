@@ -2,6 +2,10 @@
   margin: auto;
 }
 
+.allResultsFavButton:hover .allResultsFavButtonText{
+  color: #8EE11B;
+}
+
 .tile {
   height: 330px;
   width: 220px;
@@ -10,6 +14,15 @@
   margin-right: 10px;
   position: relative;
   float:left;
+}
+
+.tileWoutFavButton:hover {
+  cursor: pointer;
+}
+
+.tileWoutFavButton:hover .tileLabel {
+  color: #8EE11B;
+  text-decoration: none;
 }
 
 .tilePic {
@@ -23,12 +36,6 @@
   padding-top: 5px;
   margin-left: 15px;
   margin-right: 15px;
-}
-
-.tileLabel:hover {
-  color: #8EE11B;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .tileCalorieAndIngredientText {
@@ -320,6 +327,7 @@ span.line {
   left: 132px;
   top: 15px;
 }
+
 .allResultsFavButtonText {
   color: black;
 }

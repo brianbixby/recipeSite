@@ -20,7 +20,7 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
         console.log("favorite get error");
       } else {
         profileComp.favorite = favorite;
-        console.log('favorite', favorite);
+        // console.log('favorite', favorite);
       }
     });
   };

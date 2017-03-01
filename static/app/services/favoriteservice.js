@@ -47,7 +47,7 @@ angular.module('App')
     },
     displayFavorite: function(params) {
       var URL ='/api/users/:id';
-      console.log('User: ', params);
+      // console.log('User: ', params);
       var req = {
         url: URL,
         method: "GET",
@@ -59,7 +59,7 @@ angular.module('App')
           // console.log("req.data:", req.data);
           return false;
         }
-        console.log("Favorite get response: ", res.data);
+        // console.log("Favorite get response: ", res.data);
         // console.log("req.data:", req.data);
         return res.data;
       }, function error(res) {

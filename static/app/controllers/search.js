@@ -19,25 +19,25 @@ angular.module('App')
           if($scope.dict[key]) {
             $scope.searchTerm += [key] + ', ';
           }
-          console.log('searchTerm', $scope.searchTerm);
+          // console.log('searchTerm', $scope.searchTerm);
         }
         if($scope.userInput) {
           $scope.searchTerm += $scope.userInput + ', ';
-          console.log('userInput', $scope.userInput);
+          // console.log('userInput', $scope.userInput);
         }
-        console.log('allergy', $scope.allergy);
+        // console.log('allergy', $scope.allergy);
         $scope.search($scope.allergy);
       }
 
       $scope.search = function(obj) {
-        console.log('search input', obj);
+        // console.log('search input', obj);
         if(obj == '') {
           $scope.queryString = '?q='+$scope.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+$scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'';
           var req = {
             url: 'https://api.edamam.com/search'+$scope.queryString,
             method: "GET",
           }
-          console.log('querystring', $scope.queryString);
+          // console.log('querystring', $scope.queryString);
         }
         else {
           $scope.queryString = '?q='+$scope.searchTerm+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+$scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'&health='+$scope.allergy+'';
@@ -45,7 +45,7 @@ angular.module('App')
             url: 'https://api.edamam.com/search'+$scope.queryString,
             method: "GET",
           }
-          console.log('querystring', $scope.queryString);
+          // console.log('querystring', $scope.queryString);
         }
         window.location = '/search'+$scope.queryString;
       }

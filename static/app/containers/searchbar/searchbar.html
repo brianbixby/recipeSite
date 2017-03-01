@@ -1,0 +1,74 @@
+<div ng-controller="SearchCtrl">
+  <!-- SEARCH BAR -->
+  <div id="searchBar" class="row">
+    <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
+      <form id="search-form"  role="form" target="_blank" ng-submit="multipleAdvancedSearchTerms($event)">
+        <div class="input-group">
+          <input type="text" class="form-control search-form" ng-model="userInput" placeholder="Find the best recipes from across the web..." />
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary search-btn" data-target="#search-form"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SEARCH FILTER -->
+  <div id="searchFilter" class="row">
+    <div class="col-xs-12 col-sm-12 com-lg-12 col-lg-12">
+      <a id="searchFilterText"
+      ng-click="advancedSearchHidingOpen = !advancedSearchHidingOpen">
+        <span id="smallFont"> REFINE SEARCH BY </span> <span id="bold"> Calories, Diet, Ingredients </span> <span id="searchFilterDownArrow" class="glyphicon glyphicon-triangle-bottom"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="advancedSearchDiv" class="col-xs-12 col-lg-12" ng-show="advancedSearchHidingOpen">
+        <form id="advancedSearch-form" role="form"  target="_blank" ng-submit="multipleAdvancedSearchTerms($event)">
+          <div class="row">
+            <div class="col-xs-3 col-lg-3">
+              <span class="advancedSearchSectionHeader">Calories</span> <br>
+              <span>From <input id="textBoxInputMinCal" type="text" style="width:50px;" ng-model="minCals"/></span> <br>
+              <span>To <input id="textBoxInputMaxCal" type="text" style="width:50px;" ng-model="maxCals"/></span><br>
+              <span class="advancedSearchSectionHeader">Results</span> <br>
+              <span>Up to <input id="textBoxInputMaxResults" type="text" style="width:50px;" ng-model="maxResults"/></span><br>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+              <span class="advancedSearchSectionHeader">Diet</span> <br>
+              <div class="dietFormGroup" class="form-group">
+                <label><input type="checkbox" ng-model="dict['Vegetarian']" value="Vegetarian">  Vegetarian</label><br>
+                <label><input type="checkbox" ng-model="dict['Vegan']" value="Vegan">  Vegan</label><br>
+                <label><input type="checkbox" ng-model="dict['Paleo']" value="Paleo">  Paleo</label><br>
+                <label><input type="checkbox" ng-model="dict['High-Fiber']" value="High-Fiber">  High-Fiber</label><br>
+                <label><input type="checkbox" ng-model="dict['High-Protein']" value="High-Protein">  High-Protein</label><br>
+                <label><input type="checkbox" ng-model="dict['Low-Carb']" value="Low-Carb">  Low-Carb</label><br>
+              </div>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+              <br>
+              <div class="dietFormGroup" class="form-group">
+                <label><input type="checkbox" ng-model="dict['Low-Fat']" value="Low-Fat">  Low-Fat</label><br>
+                <label><input type="checkbox" ng-model="dict['Low-Sodium']" value="Low-Sodium">  Low-Sodium</label><br>
+                <label><input type="checkbox" ng-model="dict['Low-Sugar']" value="Low-Sugar">  Low-Sugar</label><br>
+                <label><input type="checkbox" ng-model="dict['Alcohol-Free']" value="Alcohol-Free">  Alcohol-Free</label><br>
+                <label><input type="checkbox" ng-model="dict['Balanced']" value="Balanced">  Balanced</label><br>
+              </div>
+            </div>
+            <div class="col-xs-3 col-lg-3">
+              <b>Allergies</b> <br>
+              <div class="allergyFormGroup" class="form-group">
+                <label><input type="radio" name="allergyOption" ng-model="allergy" value="tree-nut-free">  Tree Nuts</label><br>
+                <label><input type="radio" name="allergyOption" ng-model="allergy" value="peanut-free">  Peanuts</label><br>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+              <button id="advancedSearchFormButton" type="submit" class="button green" data-target="#search-form"><span id="advancedSearchIcon" class="glyphicon glyphicon-check">&nbsp;<span id="advancedSearchButtonText"><b>Done</b></span></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>

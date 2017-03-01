@@ -20,29 +20,17 @@ router.route('/')
       });
     });
   }).put(function(req, res) {
-  // console.log('req.user.id', req.user.id);
-  // console.log('req.body', req.body);
     Models.User.findByIdAndUpdate(req.user.id, {favorite: req.body}, function(err, user) {
       if (err) return res.status(500).send(err);
-      // user.favorite.update()
       res.send({'message': 'success'});
     });
-  }).delete(function(req, res) {
-    Models.User.favorite.findByIdAndRemove(req.user.id + req.data, function(err, user) {
-          if (err) return res.send(err);
-          console.log('deleting fav by id', favorite);
-          return res.send(favorite);
-        });
-    });
+  });
 
 router.route('/:id')
   .post(function(req, res) {
-  // console.log('req.user.id', req.user.id);
-  // console.log('req.body', req.body);
       Models.User.findById(req.user.id, function(err, user) {
         user.favorite.push(req.body);
         user.save(function(err) {
-            // console.log(err);
             if (err) return res.status(500).send(err);
             res.send({'message': 'success'});
         });
@@ -53,23 +41,36 @@ router.route('/:id')
         console.log('user.favorite', user.favorite);
         return res.send(user.favorite);
       });
-
     }).put(function(req, res) {
-    // console.log('req.user.id', req.user.id);
-    // console.log('req.body', req.body);
       Models.User.findByIdAndUpdate(req.user.id, {favorite: req.body}, function(err, user) {
         if (err) return res.status(500).send(err);
-        // user.favorite.update()
         res.send({'message': 'success'});
       });
     }).delete(function(req, res) {
-      Models.User.favorite.findByIdAndRemove((req.user.id + req.data), function(err) {
-        console.log('req.data', req.data);
-        console.log('req.body.data', req.body.data);
-        console.log('req.user.id', req.user.id);
-        if (err) return res.send(err);
-        console.log('deleting fav by id', favorite);
+      console.log();
+      Models.User.findById(req.user.id, function(err, user) {
+        if (err) return res.status(500).send(err);
+          for(var i = 0; i < user.length; i++) {
+            console.log("USERS: ", user[i].favorite);
+          for(var j = 0; j < user[i].favorite.length; j++) {
+            console.log("favorites: ", user[i].favorite[j]._id);
+          if(user[i].favorite[j]._id == Object.keys(req.query)[0]) {
+           console.log("Found a match");
+           user[i].favorite[j].remove({_id: Object.keys(req.query)[0] }, function(err) {
+             if (err) console.log(err);
+             console.log("DELETED!");
+           })
+         }
+       }
+     }
+     user.save(function(err){
+       if (err){
+         res.send(err);
+         }
+         else {
+           res.send('ok');
+         }
+       })
       });
     });
-
 module.exports = router;

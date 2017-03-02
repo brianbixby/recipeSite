@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
   <div ng-include="'app/containers/searchbar/smallsearchbar.html'"></div>
-
+  <h1>results </h1>
   <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length === 0">
     Sorry, no results.
   </div>
@@ -12,7 +12,6 @@
       <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length > 0"
            ng-repeat="result in searchResultsComp.results">
         <div class="tile">
-        <!-- <div class="tile col-xs-3"> -->
           <button ng-controller="FavoriteCtrl" ng-click="addToFavorite(result.recipe.uri, result.recipe.label, result.recipe.image)" class="allResultsFavButton" type="btn btn-default" style="display: none;">
             <span class="glyphicon glyphicon-bookmark"></span> <span class="allResultsFavButtonText">Save</span>
           </button>

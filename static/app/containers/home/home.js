@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'homeComp'
 });
 
-function HomeCompCtrl($http, $state, $location, Auth, UserService) {
+function HomeCompCtrl($http, $state, $location, Auth, UserService, ApiService) {
   var homeComp = this;
 
   homeComp.isLoggedIn = function() {
@@ -14,4 +14,4 @@ function HomeCompCtrl($http, $state, $location, Auth, UserService) {
 
 }
 
-HomeCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService'];
+HomeCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'ApiService'];

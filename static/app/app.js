@@ -21,8 +21,12 @@ angular.module('App', ['ui.router'])
         url: '/signup',
         component: 'signupComp'
       })
+      // .state('searchResultsState', {
+      //   url: '/search?q&app_id&app_key&from&to&calories&health',
+      //   component: 'searchResultsComp'
+      // })
       .state('searchResultsState', {
-        url: '/search?q&app_id&app_key&from&to&calories&health',
+        url: '/search?q&calories&health',
         component: 'searchResultsComp'
       })
       .state('singleResultState', {

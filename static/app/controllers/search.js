@@ -46,10 +46,10 @@ angular.module('App')
               queryParams: $scope.params,
             },
           }
+          ApiService.saveSearchParameters(req.data);
           console.log('queryString', $scope.queryString);
           console.log('queryParams', $scope.params);
           console.log('req.data ', req.data);
-          ApiService.saveSearchParameters(req.data);
         }
         else {
           $scope.queryString = '?q='+$scope.searchTerm+'';
@@ -64,12 +64,12 @@ angular.module('App')
               queryParams: $scope.params,
             },
           }
+          ApiService.saveSearchParameters(req.data);
           console.log('queryString', $scope.queryString);
           console.log('queryParams', $scope.params);
           console.log('req.data ', req.data);
-          ApiService.saveSearchParameters(req.data);
         }
-        // window.location = '/search'+$scope.queryString+$scope.params;
+        $state.go('searchResultsState');
       }
 
 

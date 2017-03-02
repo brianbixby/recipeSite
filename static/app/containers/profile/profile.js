@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'profileComp'
 });
 
-function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
+function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteService, ApiService) {
   var profileComp = this;
   profileComp.profile = Auth.currentUser();
   var user_id = profileComp.profile.id;
@@ -43,4 +43,4 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
 
 }
 
-ProfileCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];
+ProfileCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService', 'ApiService'];

@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'singleResultComp'
 });
 
-function SingleResultCompCtrl($http, $state, $location, Auth, UserService, FavoriteService) {
+function SingleResultCompCtrl($http, $state, $location, Auth, UserService, FavoriteService, ApiService) {
   var singleResultComp = this;
   singleResultComp.windUrl = window.location.href.split("/search").pop();
   // console.log('singleResultComp.windUrl: ', singleResultComp.windUrl );
@@ -57,4 +57,4 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
 
 }
 
-SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService'];
+SingleResultCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService', 'ApiService'];

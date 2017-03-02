@@ -1,5 +1,5 @@
 .searchResultsDisplay {
-  margin: auto;
+  margin: 20px auto;
 }
 
 .allResultsFavButton:hover .allResultsFavButtonText{
@@ -26,7 +26,6 @@
 }
 
 .tilePic {
-  padding-top: 10px;
   height: 200px;
   width: 100%;
 }
@@ -56,14 +55,6 @@
 .tileIngredientTextNumber {
   font-size: 14px;
   color: #8EE11B;
-}
-
-.tileIngredientText {
-
-}
-
-.tileCalorieText {
-
 }
 
 .tileSource {
@@ -197,58 +188,12 @@ span.line {
   padding: 20px;
 }
 
-#advancedSearchIcon {
-
-}
-
 #advancedSearchButtonText {
   padding-bottom: 37px;
 }
 
 #textBoxInputMaxResults, #textBoxInputMaxCal, #textBoxInputMinCal {
   float: right;
-}
-
-@media only screen and (min-width : 320px) {
-
-}
-
-
-@media only screen and (max-width : 620px) {
-  .tile {
-    height: 150px;
-    width: 130px;
-  }
-
-  .tilePic {
-    height: 119px;
-    width: 119px;
-    padding: 5px;
-  }
-}
-
-
-@media only screen and (min-width : 768px) {
-  #search-form {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-}
-
-
-@media only screen and (min-width : 992px) {
-  #search-form {
-    margin-left: 12%;
-    margin-right: 12%;
-  }
-}
-
-
-@media only screen and (min-width : 1200px) {
-  #search-form {
-    margin-left: 15%;
-    margin-right: 15%;
-  }
 }
 
 /* BUTTONS */
@@ -324,117 +269,12 @@ span.line {
   position: absolute;
   background-color: white;
   color: #8EE11B;
-  left: 132px;
-  top: 15px;
+  right: 5px;
+  top: 5px;
 }
 
 .allResultsFavButtonText {
   color: black;
-}
-
-.individualResultImg {
-  margin: 30px;
-}
-
-.individualResultIngredientCount, .individualResultPrep, .individualResultNutrition {
-  font-size: 16px;
-  color: gray;
-  border-bottom: 1px rgba(220,220,220, 0.7) solid;
-}
-
-.individualResultNutrition {
-  margin-top: 87px;
-}
-
-.individualResultLabel {
-  font-size: 20px;
-  margin-top: 45px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.individualResultSource {
-  font-size: 12px;
-  margin-bottom: 45px;
-  text-align: center;
-}
-
-.individualResultFavButton {
-  text-align: center;
-  margin-left: 140px;
-  margin-bottom: 45px;
-}
-
-.individualResultDietLabel {
-  margin-left: 70px;
-  margin-right: 70px;
-}
-
-.individualResultHealthLabel {
-
-}
-
-.individualResultIngredients {
-  margin-left: 15px;
-}
-
-.individualResultNutritionLable {
-  font-size: 10px;
-  margin-left: 35px;
-}
-
-.individualResultNutritionNumber {
-  margin-left: 55px;
-  font-size: 18px;
-}
-
-.individualResultNutritionBox {
-  display: inline-block;
-}
-
-.individualResultNutritionDiv {
-  border-bottom: 1px rgba(220,220,220, 0.7) solid;
-  margin-bottom: 15px;
-}
-
-.individualResultNutritionPercentFacts {
-  text-align: right;
-  color: gray;
-  float: right;
-  margin-left: 40px;
-}
-
-.individualResultNutritionNumberFacts {
-  text-align: right;
-
-}
-
-.individualResultNutritionItemFacts {
-  color: black;
-}
-
-.individualResultNutritionButton:hover {
-  text-decoration: none;
-  font-weight:bold;
-}
-
-.individualResultNutritionPercentDetailedFacts {
-  text-align: right;
-  color: gray;
-  float: right;
-  margin-left: 40px;
-  font-size: 12px;
-}
-
-.individualResultNutritionNumberDetailedFacts {
-  text-align: right;
-  font-size: 12px;
-}
-
-.individualResultNutritionItemDetailedFacts {
-  color: black;
-  margin-left: 40px;
-  font-size: 12px;
 }
 
 .flex-container {
@@ -454,4 +294,8 @@ span.line {
 .space-around {
   -webkit-justify-content: space-around;
   justify-content: space-around;
+}
+
+.tileCalorieAndIngredientTextHidden {
+  display: none;
 }

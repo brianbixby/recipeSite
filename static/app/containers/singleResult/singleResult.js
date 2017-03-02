@@ -46,9 +46,13 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
       // console.log("HTTP failed:", res);
     });
   }
-  
+
   singleResultComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
+  };
+
+  singleResultComp.instructions = function(obj) {
+    window.location = obj;
   };
 
 }

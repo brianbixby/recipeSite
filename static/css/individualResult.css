@@ -1,5 +1,5 @@
 .individualResultImg {
-  margin: 30px;
+  margin: 30px 30px 0px 30px;
 }
 
 .individualResultIngredientCount, .individualResultPrep, .individualResultNutrition {
@@ -8,10 +8,10 @@
   border-bottom: 1px rgba(220,220,220, 0.7) solid;
 }
 
-.individualResultNutrition {
-  margin-top: 87px;
-}
 
+.individualResultIngredientCount {
+  margin-top: 0px;
+}
 .individualResultLabel {
   font-size: 20px;
   margin-top: 45px;
@@ -97,4 +97,9 @@
   color: black;
   margin-left: 40px;
   font-size: 12px;
+}
+
+#ingredListDiv {
+  margin-top: 0px;
+  padding-top: 0px;
 }

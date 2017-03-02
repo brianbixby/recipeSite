@@ -5,12 +5,17 @@ angular.module('App')
   controllerAs: 'loginComp'
 });
 
-function LoginCompCtrl($http, $location, Auth, UserService) {
+function LoginCompCtrl($http, $location, Auth, UserService, ApiService) {
   var loginComp = this;
   loginComp.user = {
     email: '',
     password: ''
   };
+
+  $(document).ready(function(){
+    ApiService.saveSearchParameters();
+  });
+
   loginComp.userLogin = function() {
   UserService.login(loginComp.user).then(function(user) {
     // console.log("login response: ", loginComp.user);
@@ -21,4 +26,4 @@ function LoginCompCtrl($http, $location, Auth, UserService) {
 };
 }
 
-LoginCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService'];
+LoginCompCtrl.$inject = ['$http', '$location', 'Auth', 'UserService', 'ApiService'];

@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use(require('morgan')('dev'));
 
 // app.use('/api/favorites', require('./controllers/favorites'));
-// app.use('/api/users', require('./controllers/users'));
 // Replaced the above route with the following
+// app.use('/api/results', require('./controllers/results'));
 
 app.use('/api/users', expressJWT({secret: secret}).unless({
   path: [{ url: '/api/users', methods: ['POST'] }]
@@ -54,6 +54,10 @@ app.post('/api/auth', function(req, res) {
     return res.send({ user: user, token: token });
   });
 });
+
+// app.get('/api/results', function(req, res) {
+//
+// });
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'static/index.html'));

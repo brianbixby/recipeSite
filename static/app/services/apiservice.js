@@ -10,21 +10,18 @@ angular.module('App')
         savedData = data;
         console.log('savedData ', savedData);
         console.log('data ', data);
-      },
-  };
-}]);
-
-// ApiService.set(yourSharedData);
-// $scope.desiredLocation = ApiService.get();
-
+        return savedData;
+    },
     // apiRequest: function(params) {
-    //   var URL ='/api/results';
+    //   // var URL ='/api/results';
     //   console.log('api-req: ', params);
-    //   var req = {
-    //     url: URL,
-    //     method: "GET",
-    //     data: params
-    //   };
+    //   // var req = {
+    //   //   url: URL,
+    //   //   method: "GET",
+    //   //   data: params
+    //   // };
+    //   var req = params;
+    //   console.log('req', req);
     //   return $http(req).then(function(res) {
     //     if(res.status !== 200) {
     //       console.log("couldn't make api req");
@@ -36,3 +33,5 @@ angular.module('App')
     //     console.log("error response:", res);
     //   });
     // },
+  };
+}]);

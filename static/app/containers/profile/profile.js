@@ -27,7 +27,7 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
   profileComp.goToSingleResult = function(uri, name) {
     ApiService.saveSearchParameters(uri);
     $location.url('/recipe?r='+name);
-  }
+  };
 
   profileComp.deleteFavorite = function(favId) {
     FavoriteService.deleteFavorite(favId).then(function(favorite) {

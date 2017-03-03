@@ -26,32 +26,19 @@ angular.module('App')
       }
 
       $scope.search = function(obj) {
+        if(obj == '') {
+          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'';
+        }
+        else {
+          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'&health='+$scope.allergy+'';
+        }
         $scope.queryString = '?q='+$scope.searchTerm+'';
         var data = {
           queryString: $scope.queryString,
           queryParams: $scope.params,
-        }
-        if(obj == '') {
-          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'';
-          ApiService.saveSearchParameters(data);
-          // '&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='
-          // 'https://api.edamam.com/search'+$scope.queryString,
-        }
-        else {
-          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'&health='+$scope.allergy+'';
-          ApiService.saveSearchParameters(data);
-          // +'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+
-          // 'https://api.edamam.com/search'+$scope.queryString,
-        }
+        };
+        ApiService.saveSearchParameters(data);
         $location.url('/search'+$scope.queryString+$scope.params);
+        }
       }
-}]);
-
-// var req = {
-//   url: 'api/results',
-//   method: "GET",
-//   data: {
-//     queryString: $scope.queryString,
-//     queryParams: $scope.params,
-//   },
-// }
+]);

@@ -12,52 +12,54 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
   var queryString = '';
   var queryParams = '';
 
+  searchResultsComp.search = function(queryString, queryParams) {
+    console.log('queryString ', queryString);
+    console.log('queryParams ', queryParams);
+      var req = {
+        url: 'api/results/recipes?queryString='+queryString+queryParams+'',
+        method: "GET",
+        // data: {
+        //   queryString: queryString,
+        //   queryParams: queryParams,
+        // },
+      }
+      $http(req).then(function success(res) {
+        console.log("HTTP success:", res);
+        if (res.data.Error === "Not found!") {
+          searchResultsComp.results = [];
+        } else {
+          console.log('res', res);
+          searchResultsComp.results = res.data.hits;
+          console.log(searchResultsComp.results);
+          // console.log('results length: ', searchResultsComp.results.length);
+        }
+        console.log('searchResultsComp.results', searchResultsComp.results);
+        return searchResultsComp.results;
+      }, function failure(res) {
+        searchResultsComp.results = [];
+        console.log("HTTP failed:", res);
+      });
+    }
+
   $(function(){
     queryString = ApiService.saveSearchParameters().queryString;
-    queryParams = ApiService.saveSearchParameters().queryParams;
-    searchResultsComp.search();
+    if(ApiService.saveSearchParameters().queryParams) {
+      queryParams = ApiService.saveSearchParameters().queryParams;
+    };
     console.log('queryParams ', queryParams);
     console.log('queryString ', queryString);
+    searchResultsComp.search(queryString, queryParams);
+    // console.log('queryParams ', queryParams);
+    // console.log('queryString ', queryString);
   });
+  console.log('queryParams out of iffe ', queryParams);
+  console.log('queryString out of iffe', queryString);
 
   $(document).on('mouseenter', '.tile', function () {
       $(this).find(":button").show();
   }).on('mouseleave', '.tile', function () {
       $(this).find(":button").hide();
   });
-
-  searchResultsComp.search = function() {
-    // searchResultsComp.windUrl = window.location.href.split("/search").pop();
-    // console.log('searchResultsComp.initialLoad: ', searchResultsComp.initialLoad);
-    if(searchResultsComp.initialLoad == true) {
-      console.log('true route');
-      var req = {
-        url: 'https://api.edamam.com/search'+queryString+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+queryParams+'',
-        method: "GET",
-      }
-    } else {
-      console.log('false route');
-        var req = {
-          url: 'https://api.edamam.com/search'+queryString+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to='+queryParams+'',
-          method: "GET",
-        }
-    }
-
-    $http(req).then(function success(res) {
-      searchResultsComp.initialLoad = false;
-      console.log("HTTP success:", res);
-      if (res.data.Error === "Not found!") {
-        searchResultsComp.results = [];
-      } else {
-        searchResultsComp.results = res.data.hits;
-        console.log(searchResultsComp.results);
-        console.log('results length: ', searchResultsComp.results.length);
-      }
-    }, function failure(res) {
-      searchResultsComp.results = [];
-      console.log("HTTP failed:", res);
-    });
-  }
 
   searchResultsComp.isLoggedIn = function() {
     return Auth.isLoggedIn();
@@ -68,7 +70,7 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
     // window.location = '/recipe' + searchResultsComp.queryString;
     ApiService.saveSearchParameters(uri);
     $location.url('/recipe?r='+label);
-  }
+  };
 
 }
 

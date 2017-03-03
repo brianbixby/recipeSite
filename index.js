@@ -56,7 +56,23 @@ app.post('/api/auth', function(req, res) {
 });
 
 // app.get('/api/results', function(req, res) {
+//   var req = {
+//     url: 'https://api.edamam.com/search?r='+parsedQueryString+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa',
+//     method: "GET",
+//   }
 //
+//   $http(req).then(function success(res) {
+//     console.log("HTTP success:", res);
+//     if (res.data.Error === "Not found!") {
+//       singleResultComp.results = [];
+//     } else {
+//       singleResultComp.results = res.data;
+//       console.log(singleResultComp.results);
+//     }
+//   }, function failure(res) {
+//     singleResultComp.results = [];
+//     console.log("HTTP failed:", res);
+//   });
 // });
 
 app.get('/*', function(req, res) {

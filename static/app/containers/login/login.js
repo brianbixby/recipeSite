@@ -18,7 +18,6 @@ function LoginCompCtrl($http, $location, Auth, UserService, ApiService) {
 
   loginComp.userLogin = function() {
   UserService.login(loginComp.user).then(function(user) {
-    // console.log("login response: ", loginComp.user);
     if(user !== false) {
       $location.path('/');
     }

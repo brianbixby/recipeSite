@@ -20,7 +20,6 @@ function SignupCompCtrl($http, $state, $location, Auth, UserService) {
     if(user === false) {
       // console.log("user create error");
     } else {
-      // console.log("got user: ", signupComp.user);
       UserService.login(params)
       $location.path('/');
     }

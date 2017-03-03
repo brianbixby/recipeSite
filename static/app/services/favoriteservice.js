@@ -3,7 +3,6 @@ angular.module('App')
   return {
     createFavorite: function(params) {
       var URL ='/api/users/:id';
-      // console.log('FAVORITE-params: ', params);
       var req = {
         url: URL,
         method: "POST",
@@ -11,12 +10,8 @@ angular.module('App')
       };
       return $http(req).then(function(res) {
         if(res.status !== 200) {
-          // console.log("couldn't create favorite");
-          // console.log("req.data:", req.data);
           return false;
         }
-        // console.log("Favorite create response: ", res.data);
-        // console.log("req.data:", req.data);
         return res.data;
       }, function error(res) {
         // console.log("req.data:", req.data);
@@ -25,7 +20,6 @@ angular.module('App')
     },
     deleteFavorite: function(params) {
       var URL ='/api/users/:id';
-      console.log('DELETE-params: id ', params);
       var req = {
         url: URL,
         method: "DELETE",
@@ -33,21 +27,16 @@ angular.module('App')
       };
       return $http(req).then(function(res) {
         if(res.status !== 200) {
-          console.log("couldn't delete favorite");
-          console.log("req.data:", req.data);
           return false;
         }
-        console.log("Favorite deleted response: ", res.data);
-        console.log("req.data:", req.data);
         return res.data;
       }, function error(res) {
-        console.log("req.data:", req.data);
-        console.log("error response:", res);
+        // console.log("req.data:", req.data);
+        // console.log("error response:", res);
       });
     },
     displayFavorite: function(params) {
       var URL ='/api/users/:id';
-      // console.log('User: ', params);
       var req = {
         url: URL,
         method: "GET",
@@ -55,12 +44,8 @@ angular.module('App')
       };
       return $http(req).then(function(res) {
         if(res.status !== 200) {
-          // console.log("couldn't get favorite");
-          // console.log("req.data:", req.data);
           return false;
         }
-        // console.log("Favorite get response: ", res.data);
-        // console.log("req.data:", req.data);
         return res.data;
       }, function error(res) {
         // console.log("req.data:", req.data);

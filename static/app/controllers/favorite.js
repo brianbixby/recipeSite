@@ -2,8 +2,6 @@ angular.module('App')
 .controller('FavoriteCtrl', ['$scope', '$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService', 'ApiService',
     function($scope, $http, $state, $location, Auth, UserService, FavoriteService, ApiService) {
       $scope.addToFavorite = function(uri, label, img) {
-        // console.log('uri', uri);
-        // console.log('label', label);
         $scope.params = {
           name: label,
           uri: uri,

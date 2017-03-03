@@ -38,7 +38,7 @@ router.route('/:id')
   }).get(function(req, res) {
       Models.User.findById(req.user.id, function(err, user) {
         if (err) return res.status(500).send(err);
-        console.log('user.favorite', user.favorite);
+        // console.log('user.favorite', user.favorite);
         return res.send(user.favorite);
       });
     }).put(function(req, res) {
@@ -47,7 +47,6 @@ router.route('/:id')
         res.send({'message': 'success'});
       });
     }).delete(function(req, res) {
-      console.log();
       Models.User.findById(req.user.id, function(err, user) {
         if (err) return res.status(500).send(err);
           for(var i = 0; i < user.length; i++) {

@@ -11,20 +11,16 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
   var parsedQueryString = '';
   singleResultComp.results = undefined;
 
-  $(function(){
-    queryString = ApiService.saveSearchParameters();
-    console.log('queryString ', queryString);
-    singleResultComp.search();
-  });
-
-  singleResultComp.search = function() {
-    var hashIndex = queryString.indexOf('#');
-    var leftSide = queryString.substring(0, hashIndex);
-    var rightSide = queryString.substring(hashIndex + 1, queryString.length);
+  singleResultComp.search = function(string) {
+    console.log('string ', string);
+    var hashIndex = string.indexOf('#');
+    var leftSide = string.substring(0, hashIndex);
+    var rightSide = string.substring(hashIndex + 1, string.length);
     parsedQueryString = leftSide + '%23' + rightSide;
+    console.log('parsedQueryString', parsedQueryString);
 
     var req = {
-      url: 'https://api.edamam.com/search?r='+parsedQueryString+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa',
+      url: 'api/results/singlerecipe?queryString='+parsedQueryString+'',
       method: "GET",
     }
 
@@ -34,10 +30,17 @@ function SingleResultCompCtrl($http, $state, $location, Auth, UserService, Favor
       } else {
         singleResultComp.results = res.data;
       }
+      return singleResultComp.results;
     }, function failure(res) {
       singleResultComp.results = [];
     });
   }
+
+  $(function(){
+    queryString = '?r='+ApiService.saveSearchParameters();
+    console.log('queryString ', queryString);
+    singleResultComp.search(queryString);
+  });
 
   singleResultComp.isLoggedIn = function() {
     return Auth.isLoggedIn();

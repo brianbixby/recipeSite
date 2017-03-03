@@ -69,7 +69,7 @@ angular.module('App')
           console.log('queryParams', $scope.params);
           console.log('req.data ', req.data);
         }
-        $state.go('searchResultsState');
+        $location.url('/search'+$scope.queryString+$scope.params);
       }
 
 

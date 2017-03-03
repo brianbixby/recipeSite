@@ -7,8 +7,6 @@ angular.module('App')
 
 function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, FavoriteService, ApiService) {
   var searchResultsComp = this;
-  searchResultsComp.windUrl = window.location.href.split("/search").pop();
-  console.log('searchResultsComp.windUrl: ', searchResultsComp.windUrl );
   searchResultsComp.results = undefined;
   searchResultsComp.initialLoad = true;
   var queryString = '';
@@ -65,10 +63,11 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
     return Auth.isLoggedIn();
   };
 
-  searchResultsComp.goToSingleResult = function(obj) {
-    searchResultsComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
-    window.location = '/recipe' + searchResultsComp.queryString;
-
+  searchResultsComp.goToSingleResult = function(uri, label) {
+    // searchResultsComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
+    // window.location = '/recipe' + searchResultsComp.queryString;
+    ApiService.saveSearchParameters(uri);
+    $location.url('/recipe?r='+label);
   }
 
 }

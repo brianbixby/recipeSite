@@ -2,7 +2,7 @@
 <div ng-show="profileComp.favorite !== undefined && profileComp.favorite.length > 0"
      ng-repeat="fav in profileComp.favorite">
   <div class="favTile col-sm-4 col-xs-3">
-    <div ng-click="profileComp.goToSingleResult(fav.uri)" class="favTileWoutDeleteButton">
+    <div ng-click="profileComp.goToSingleResult(fav.uri, fav.name)" class="favTileWoutDeleteButton">
       <img class="favPic" ng-src="{{fav.img}}" />
       <p class="favLabel">{{fav.name}}</p>
     </div>

@@ -25,9 +25,11 @@ function ProfileCompCtrl($http, $state, $location, Auth, UserService, FavoriteSe
     });
   };
 
-  profileComp.goToSingleResult = function(obj) {
-    profileComp.queryString = '?r='+obj+'&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa';
-    window.location = '/recipe' + profileComp.queryString;
+  profileComp.goToSingleResult = function(uri, name) {
+    console.log('uri', uri);
+    console.log('name', name);
+    ApiService.saveSearchParameters(uri);
+    $location.url('/recipe?r='+name);
   }
 
   profileComp.deleteFavorite = function(favId) {

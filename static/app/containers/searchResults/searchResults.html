@@ -2,7 +2,6 @@
 <div class="container-fluid">
 
   <div ng-include="'app/containers/searchbar/smallsearchbar.html'"></div>
-  <h1>results </h1>
   <div ng-show="searchResultsComp.results !== undefined && searchResultsComp.results.length === 0">
     Sorry, no results.
   </div>
@@ -15,7 +14,7 @@
           <button ng-controller="FavoriteCtrl" ng-click="addToFavorite(result.recipe.uri, result.recipe.label, result.recipe.image)" class="allResultsFavButton" type="btn btn-default" style="display: none;">
             <span class="glyphicon glyphicon-bookmark"></span> <span class="allResultsFavButtonText">Save</span>
           </button>
-          <div class="tileWoutFavButton" ng-click="searchResultsComp.goToSingleResult(result.recipe.uri)">
+          <div class="tileWoutFavButton" ng-click="searchResultsComp.goToSingleResult(result.recipe.uri, result.recipe.label)">
             <img class="tilePic" ng-src="{{result.recipe.image}}" />
             <p class="tileLabel">{{result.recipe.label}}</p>
             <p class="tileCalorieAndIngredientText"><span class="tileCalorieText"> <span class="tileCalorieTextNumber"> {{result.recipe.calories/result.recipe.yield | noDecimal}}</span> CALORIES   </span>   |   <span class="tileIngredientText"> <span class="tileIngredientTextNumber"> {{result.recipe.ingredientLines.length}} </span>   INGREDIENTS</span></p>

@@ -24,10 +24,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 //Observe server activity
 app.use(require('morgan')('dev'));
 
-// app.use('/api/favorites', require('./controllers/favorites'));
-// Replaced the above route with the following
 app.use('/api/results', require('./controllers/results'));
-
 app.use('/api/users', expressJWT({secret: secret}).unless({
   path: [{ url: '/api/users', methods: ['POST'] }]
 }), require('./controllers/users'));
@@ -54,58 +51,6 @@ app.post('/api/auth', function(req, res) {
     return res.send({ user: user, token: token });
   });
 });
-
-// app.get('/api/results', function(req, res) {
-//   console.log('req', req);
-//   var results = undefined;
-//   var baseUrl = 'https://api.edamam.com/search';
-//   var appId = '&app_id=c8ceed5f&app_key=bbfa5375222109bd6452b480ab860eaa&from=0&to=';
-//   var queryString = '';
-//   var queryParams = '';
-//   var url = baseUrl + queryString + appId + queryParams;
-//   var req = {
-//     url: url,
-//     method: "GET",
-//   }
-//   console.log('req ', req);
-//   request(url, function(error, response, main) {
-//     console.log("HTTP success:", res);
-//     if (!error && response.statusCode == 200) {
-//       // results = res.data;
-//       console.log('res.data ', res.data);
-//       console.log('res.data.hits ', res.data.hits);
-//       results = res.data.hits;
-//       console.log('results ', results);
-//       return res.send(results);
-//     }
-//   });
-// })
-  // $http(req).then(function success(res) {
-  //   console.log("HTTP success:", res);
-  //   if (res.data.Error === "Not found!") {
-  //     results = [];
-  //   } else {
-  //     // results = res.data;
-  //     console.log('res.data ', res.data);
-  //     console.log('res.data.hits ', res.data.hits);
-  //     results = res.data.hits;
-  //     console.log('results ', results);
-  //     return res.send(results);
-  //   }
-  // }, function failure(res) {
-  //   results = [];
-  //   console.log("HTTP failed:", res);
-  // });
-
-
-// var req = {
-//   url: 'api/results',
-//   method: "GET",
-//   data: {
-//     queryString: $scope.queryString,
-//     queryParams: $scope.params,
-//   },
-// }
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'static/index.html'));

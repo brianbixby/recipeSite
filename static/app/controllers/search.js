@@ -27,18 +27,25 @@ angular.module('App')
 
       $scope.search = function(obj) {
         if(obj == '') {
-          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'';
+          $scope.params = '&maxResults='+$scope.maxResults+'&minCals='+$scope.minCals+'&maxCals='+$scope.maxCals+'';
+          $scope.queryString = '?q='+$scope.searchTerm+'';
+          var data = {
+            queryString: $scope.queryString,
+            queryParams: $scope.params,
+          };
+          ApiService.saveSearchParameters(data);
+          $location.url('/search'+$scope.queryString+$scope.params);
         }
         else {
-          $scope.params = $scope.maxResults+'&calories=gte '+$scope.minCals+',lte '+$scope.maxCals+'&health='+$scope.allergy+'';
+          $scope.params = '&maxResults='+$scope.maxResults+'&minCals='+$scope.minCals+'&maxCals='+$scope.maxCals+'&health='+$scope.allergy+'';
+          $scope.queryString = '?q='+$scope.searchTerm+'';
+          var data = {
+            queryString: $scope.queryString,
+            queryParams: $scope.params,
+          };
+          ApiService.saveSearchParameters(data);
+          $location.url('/search'+$scope.queryString+$scope.params);
         }
-        $scope.queryString = '?q='+$scope.searchTerm+'';
-        var data = {
-          queryString: $scope.queryString,
-          queryParams: $scope.params,
-        };
-        ApiService.saveSearchParameters(data);
-        $location.url('/search'+$scope.queryString+$scope.params);
         }
       }
 ]);

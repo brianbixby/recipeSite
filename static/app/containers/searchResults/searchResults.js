@@ -5,7 +5,7 @@ angular.module('App')
   controllerAs: 'searchResultsComp'
 });
 
-function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, FavoriteService, ApiService) {
+function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, FavoriteService, ApiService, CacheService) {
   var searchResultsComp = this;
   searchResultsComp.results = undefined;
   searchResultsComp.initialLoad = true;
@@ -13,8 +13,8 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
   var queryParams = '';
 
   searchResultsComp.search = function(queryString, queryParams) {
-    console.log('queryString ', queryString);
-    console.log('queryParams ', queryParams);
+    // console.log('queryString ', queryString);
+    // console.log('queryParams ', queryParams);
       var req = {
         url: 'api/results/recipes?queryString='+queryString+queryParams+'',
         method: "GET",
@@ -29,6 +29,10 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
         } else {
           searchResultsComp.results = res.data.hits;
         }
+        console.log('aaaaaaaasfasegknerwglerwkgknrewgklnrkgn');
+        CacheService.put(queryString + queryParams, searchResultsComp.results);
+        var veryTemp = CacheService.put(queryString + queryParams, searchResultsComp.results);
+        console.log('veryTemp');
         return searchResultsComp.results;
       }, function failure(res) {
         searchResultsComp.results = [];
@@ -52,10 +56,11 @@ function SearchResultsCompCtrl($http, $state, $location, Auth, UserService, Favo
   };
 
   searchResultsComp.goToSingleResult = function(uri, label) {
-    ApiService.saveSearchParameters(uri);
+    // ApiService.saveSearchParameters(uri);
+    ApiService.saveSearchTerm(uri);
     $location.url('/recipe?r='+label);
   };
 
 }
 
-SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService', 'ApiService'];
+SearchResultsCompCtrl.$inject = ['$http', '$state', '$location', 'Auth', 'UserService', 'FavoriteService', 'ApiService', 'CacheService'];

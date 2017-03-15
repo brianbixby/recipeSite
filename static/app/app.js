@@ -1,7 +1,6 @@
 angular.module('App', ['ui.router'])
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)
-      {
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$cacheFactoryProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $cacheFactoryProvider) {
 
       $urlRouterProvider.otherwise('/');
 

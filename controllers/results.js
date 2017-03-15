@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
-router.get('/recipes', function(req, res) {
+router.get('/recipes',  function(req, res) {
   var queryString =  req.query.queryString;
   var maxResults = req.query.maxResults
   var minCals = req.query.minCals
@@ -19,7 +19,7 @@ router.get('/recipes', function(req, res) {
     });
   });
 
-router.get('/singlerecipe', function(req, res) {
+router.get('/singlerecipe', function(req, res){
   var string =  req.query.queryString;
   var hashIndex = string.indexOf('#');
   var leftSide = string.substring(0, hashIndex);

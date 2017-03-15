@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/brianbixby/recipesite#readme",
   "dependencies": {
+    "angular-cache": "^4.6.0",
     "angular-chart.js": "^1.1.1",
+    "angular-template-cache": "^1.2.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.16.1",
     "chart.js": "^2.5.0",
